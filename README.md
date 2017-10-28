@@ -16,4 +16,4 @@ User can Export the report to customer as a .PDF file.
 
 ![page1](Zoltar-Report/public/assets/images/New Mockup 1.png)
 
-![page2](/public/assets/images/New Mockup 2.png)
+![page2](/assets/images/New Mockup 2.png)
