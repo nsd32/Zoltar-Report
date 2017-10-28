@@ -12,4 +12,4 @@ User may format the customized report as a .PDF file.
 User can Export the report to customer as a .PDF file.  
 
 
-![page1](assets/images/page1.png)
+![page1](public/assets/images/page1.png)
