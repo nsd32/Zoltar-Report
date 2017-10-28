@@ -13,6 +13,7 @@ User can Export the report to customer as a .PDF file.
 
 
 ## Wire Frames
+![alt text] https://github.com/nsd32/Zoltar-Report/public/assets/images/Page1.png
 
 +[logo]: https://github.com/nsd32/Zoltar-Report/public/assets/images/Page1.png
  +
