@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Post = sequelize.define('Post', {
+	var View = sequelize.define('view', {
 		view_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -32,5 +32,5 @@ module.exports = function(sequelize, DataTypes) {
 
 		}
 	});
-	return Post;
+	return View;
 };
