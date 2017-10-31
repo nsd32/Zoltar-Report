@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Post = sequelize.define('Post', {
+	var Company = sequelize.define('company', {
 		company_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -19,5 +19,5 @@ module.exports = function(sequelize, DataTypes) {
 			len: [1]
 		}
 	});
-	return Post;
+	return Company;
 };

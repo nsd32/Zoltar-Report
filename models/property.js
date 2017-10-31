@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Post = sequelize.define('Post', {
+	var Property = sequelize.define('property', {
 		property_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -32,5 +32,5 @@ module.exports = function(sequelize, DataTypes) {
 
 		}
 	});
-	return Post;
+	return Property;
 };
