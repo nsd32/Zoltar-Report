@@ -99,3 +99,5 @@ module.exports = function(sequelize, DataTypes) {
 			}
         }
     });
+	return monthUsage;
+};
