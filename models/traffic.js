@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Social = sequelize.define('Social', {
+	var traffic = sequelize.define('traffic', {
         entrances: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -35,7 +35,42 @@ module.exports = function(sequelize, DataTypes) {
 				isDecimal: true
 			}
         },
-        social_source: {
+        referral_landing: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isNumeric: true
+			}
+		},
+		referral_sources: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isNumeric: true
+			}
+		},
+		social_landing: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isNumeric: true
+			}
+		},
+		social_sources: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isNumeric: true
+			}
+		},
+		other_sources: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isNumeric: true
+			}
+		},
+		traffic_source: {
 			type: DataTypes.STRING(50),
 			allowNull: false,
 			validate: {
@@ -78,26 +113,26 @@ module.exports = function(sequelize, DataTypes) {
 			}
         }
     });
-    
-    Social.associate = function(models) {
+
+    traffic.associate = function(models) {
 		// We're saying that Social Data should belong to an Company, Property and View
 		// Social Data can't be created without an Company, Property and View due to the foreign key constraint
-		Social.belongsTo(models.Company, {
+		traffic.belongsTo(models.Company, {
 			foreignKey: {
 				allowNull: false
 			}
         });
-        Social.belongsTo(models.Property, {
+        traffic.belongsTo(models.Property, {
 			foreignKey: {
 				allowNull: false
 			}
         });
-        Social.belongsTo(models.View, {
+        traffic.belongsTo(models.View, {
 			foreignKey: {
 				allowNull: false
 			}
 		});
     };
-    
-    return Social;
+
+	return traffic;
 };

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Company = sequelize.define('company', {
+	var Company = sequelize.define('Company', {
 		company_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -19,5 +19,25 @@ module.exports = function(sequelize, DataTypes) {
 			len: [1]
 		}
 	});
+	
+	Company.associate = function(models) {
+		Company.hasMany(models.Property, { 
+			onDelete: 'cascade'
+		});
+		Company.hasMany(models.Social, { 
+			onDelete: 'cascade'
+		});
+		Company.hasMany(models.Search_engine, { 
+			onDelete: 'cascade'
+		});
+		Company.hasMany(models.monthUsage, { 
+			onDelete: 'cascade'
+		});
+		Company.hasMany(models.traffic, { 
+			onDelete: 'cascade'
+		});
+
+	};
+
 	return Company;
 };

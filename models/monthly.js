@@ -1,20 +1,48 @@
 module.exports = function(sequelize, DataTypes) {
-	var Social = sequelize.define('Social', {
-        entrances: {
+	var monthUsage = sequelize.define('monthUsage', {
+        sessions: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			validate: {
 				isNumeric: true
 			}
         },
-        bounces: {
+        pageviews: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			validate: {
 				isNumeric: true
 			}
         },
-        bounce_rate: {
+        users: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				isNumeric: true
+			}
+        },
+        pageviewsBySession: {
+			type: DataTypes.DECIMAL(2,2),
+			allowNull: false,
+			validate: {
+				isDecimal: true
+			}
+        },
+        exitRate: {
+			type: DataTypes.DECIMAL(2,2),
+			allowNull: false,
+			validate: {
+				isDecimal: true
+			}
+        },
+        bounceRate: {
+			type: DataTypes.DECIMAL(2,2),
+			allowNull: false,
+			validate: {
+				isDecimal: true
+			}
+        },
+        newSession: {
 			type: DataTypes.DECIMAL(2,2),
 			allowNull: false,
 			validate: {
@@ -28,21 +56,14 @@ module.exports = function(sequelize, DataTypes) {
 	
 			}
         },
-        pageviews_session: {
-			type: DataTypes.DECIMAL(2,2),
+        goalCompletion: {
+			type: DataTypes.INTEGER,
 			allowNull: false,
 			validate: {
-				isDecimal: true
+				isNumeric: true
 			}
-        },
-        social_source: {
-			type: DataTypes.STRING(50),
-			allowNull: false,
-			validate: {
-				
-			}
-        },
-        company_id: {
+		},
+		company_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			validate: {
@@ -78,26 +99,26 @@ module.exports = function(sequelize, DataTypes) {
 			}
         }
     });
-    
-    Social.associate = function(models) {
+
+    monthUsage.associate = function(models) {
 		// We're saying that Social Data should belong to an Company, Property and View
 		// Social Data can't be created without an Company, Property and View due to the foreign key constraint
-		Social.belongsTo(models.Company, {
+		monthUsage.belongsTo(models.Company, {
 			foreignKey: {
 				allowNull: false
 			}
         });
-        Social.belongsTo(models.Property, {
+        monthUsage.belongsTo(models.Property, {
 			foreignKey: {
 				allowNull: false
 			}
         });
-        Social.belongsTo(models.View, {
+        monthUsage.belongsTo(models.View, {
 			foreignKey: {
 				allowNull: false
 			}
 		});
     };
-    
-    return Social;
+
+	return monthUsage;
 };
