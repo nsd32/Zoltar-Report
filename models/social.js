@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Social = sequelize.define('social', {
+	var Social = sequelize.define('Social', {
         entrances: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -79,25 +79,25 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     
-    // Social.associate = function(models) {
-	// 	// We're saying that Social Data should belong to an Company, Property and View
-	// 	// Social Data can't be created without an Company, Property and View due to the foreign key constraint
-	// 	Social.belongsTo(models.companies, {
-	// 		foreignKey: {
-	// 			allowNull: false
-	// 		}
-    //     });
-    //     Social.belongsTo(models.properties, {
-	// 		foreignKey: {
-	// 			allowNull: false
-	// 		}
-    //     });
-    //     Social.belongsTo(models.views, {
-	// 		foreignKey: {
-	// 			allowNull: false
-	// 		}
-	// 	});
-    // };
+    Social.associate = function(models) {
+		// We're saying that Social Data should belong to an Company, Property and View
+		// Social Data can't be created without an Company, Property and View due to the foreign key constraint
+		Social.belongsTo(models.Company, {
+			foreignKey: {
+				allowNull: false
+			}
+        });
+        Social.belongsTo(models.Property, {
+			foreignKey: {
+				allowNull: false
+			}
+        });
+        Social.belongsTo(models.View, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+    };
     
     return Social;
 };

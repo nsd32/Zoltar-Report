@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	var Search_Engine = sequelize.define('search_engine', {
+	var Search_Engine = sequelize.define('Search_engine', {
  
         entrances: {
 			type: DataTypes.INTEGER,
@@ -59,25 +59,25 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     
-    // Search_Engine.associate = function(models) {
-	// 	// We're saying that Search_Engine Data should belong to an Company, Property and View
-	// 	// Search_Engine Data can't be created without an Company, Property and View due to the foreign key constraint
-	// 	Soc.belongsTo(models.companies, {
-	// 		foreignKey: {
-	// 			allowNull: false
-	// 		}
-    //     });
-    //     Search_Engine.belongsTo(models.properties, {
-	// 		foreignKey: {
-	// 			allowNull: false
-	// 		}
-    //     });
-    //     Search_Engine.belongsTo(models.views, {
-	// 		foreignKey: {
-	// 			allowNull: false
-	// 		}
-	// 	});
-    // };
+    Search_Engine.associate = function(models) {
+		// We're saying that Search_Engine Data should belong to an Company, Property and View
+		// Search_Engine Data can't be created without an Company, Property and View due to the foreign key constraint
+		Search_Engine.belongsTo(models.Company, {
+			foreignKey: {
+				allowNull: false
+			}
+        });
+        Search_Engine.belongsTo(models.Property, {
+			foreignKey: {
+				allowNull: false
+			}
+        });
+        Search_Engine.belongsTo(models.View, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+    };
     
     return Search_Engine;
 };

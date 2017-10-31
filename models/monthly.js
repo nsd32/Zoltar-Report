@@ -99,5 +99,26 @@ module.exports = function(sequelize, DataTypes) {
 			}
         }
     });
+
+    monthUsage.associate = function(models) {
+		// We're saying that Social Data should belong to an Company, Property and View
+		// Social Data can't be created without an Company, Property and View due to the foreign key constraint
+		monthUsage.belongsTo(models.Company, {
+			foreignKey: {
+				allowNull: false
+			}
+        });
+        monthUsage.belongsTo(models.Property, {
+			foreignKey: {
+				allowNull: false
+			}
+        });
+        monthUsage.belongsTo(models.View, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+    };
+
 	return monthUsage;
 };
