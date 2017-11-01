@@ -1,4 +1,49 @@
 <div class='container'>
 	<h1>Zoltar Report!</h1>
-	<img src="https://media.giphy.com/media/l2JhC8EMEg2tSAXJe/giphy.gif">
+	<div>
+		<img src="https://media.giphy.com/media/l2JhC8EMEg2tSAXJe/giphy.gif">
+		<button class="btn btn-success btn-block" data-toggle="modal" data-target="#createModal">Add Company</button>
+	</div>
 </div>
+
+
+
+<!-- Create New User Modal -->
+	<div class="modal" id="createModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"><span class="fa fa-building fa-2x"></span> Create Company Account</h5>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger hide" id="createError" role="alert"></div>
+					<form role="form" class="form-group" id="createUser">
+									
+						<label for="Company Name">Company Name:<span style="color:red">*</span></label>
+						<input type="text" class="form-control" id="companyName-input" required>
+
+						<label for="Account Number">Account Number:<span style="color:red">*</span></label>
+						<input type="text" class="form-control" id="account-input" placeholder="" required>
+
+						<label for="Property Name">Property Name:<span style="color:red">*</span></label>
+						<input type="text" class="form-control" id="propName-input">
+													
+						<label for="Tracking ID">Tracking ID:<span style="color:red">*</span></label>
+						<input type="text" class="form-control" id="trackingID-input" >
+						
+						<label for="View Name">View Name:<span style="color:red">*</span></label>
+						<input type="text" class="form-control" id="viewName-input" required>
+
+						<label for="View ID">View ID:<span style="color:red">*</span></label>
+						<input type="text" class="form-control" id="viewID-input" required>
+
+						<p><span style="color:red">*</span> Required</p>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success" id="createAcct">Create Company</button>
+					<button type="button" class="btn btn-danger" id="createCancel" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
