@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-var db = require('./models');
+var db = require('./models'); 
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -19,7 +19,7 @@ app.use(express.static("public"));
 
 require("./routes/api-routes.js")(app);
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync(/*{ force: true }*/).then(function() {
 	app.listen(PORT, function() {
 		console.log('App listening on PORT ' + PORT);
 	});
