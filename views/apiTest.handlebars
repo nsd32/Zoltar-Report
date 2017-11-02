@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello Analytics Reporting API V4</title>
+  <meta name="google-signin-client_id" content="647775191935-mq1sglfts5kf2sg9vhv9sd3kpqqf429h.apps.googleusercontent.com">
+  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
+</head>
+<body>
+
+<h1>Hello Analytics Reporting API V4</h1>
+
+<!-- The Sign-in button. This will run `queryReports()` on success. -->
+<p class="g-signin2" data-onsuccess="queryReports"></p>
+
+<!-- The API response will be printed here. -->
+<textarea cols="80" rows="20" id="query-output"></textarea>
+
+<script>
+  // Replace with your view ID.
+  var VIEW_ID = '95712718';
+
+  // Query the API and print the results to the page.
+  function queryReports() {
+    gapi.client.request({
+      path: '/v4/reports:batchGet',
+      root: 'https://analyticsreporting.googleapis.com/',
+      method: 'POST',
+      body: {
+        reportRequests: [
+          {
+            viewId: VIEW_ID,
+            dateRanges: [
+              {
+                startDate: '7daysAgo',
+                endDate: 'today'
+              }
+            ],
+            metrics: [
+              {
+                expression: 'ga:sessions'
+              },
+              {
+                expression: 'ga:pageviews'
+              },
+              {
+                expression: 'ga:users'
+              },
+              {
+                expression: 'ga:pageviewsPerSession'
+              },
+              {
+                expression: 'ga:bounceRate'
+              },
+              {
+                expression: 'ga:exitRate'
+              },
+              {
+                expression: 'ga:percentNewSessions'
+              },
+              {
+                expression: 'ga:avgSessionDuration'
+              },
+              {
+                expression: 'ga:goalCompletionsAll'
+              },
+              {
+                expression: 'ga:avgPageLoadTime'
+              }
+            ],
+            // dimensions: [
+            //   {
+            //     name: 'ga:sessionDurationBucket'
+            //   }
+            // ]
+          }
+        ]
+      }
+    }).then(displayResults, console.error.bind(console));
+  }
+
+  function displayResults(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    document.getElementById('query-output').value = formattedJson;
+    console.log(formattedJson);
+    var sessions = response.result.reports[0].data.rows[0].metrics[0].values[0];
+    var pageviews = response.result.reports[0].data.rows[0].metrics[0].values[1];
+    var users = response.result.reports[0].data.rows[0].metrics[0].values[2];
+    var pageviewsPerSession = response.result.reports[0].data.rows[0].metrics[0].values[3];
+    var bounceRate = response.result.reports[0].data.rows[0].metrics[0].values[4];
+    var exitRate = response.result.reports[0].data.rows[0].metrics[0].values[5];
+    var newSessions = response.result.reports[0].data.rows[0].metrics[0].values[6];
+    var avgSessionDuration = response.result.reports[0].data.rows[0].metrics[0].values[7];
+    var goalCompletions = response.result.reports[0].data.rows[0].metrics[0].values[8];
+   
+    
+
+    var newTest = {
+      sessions: sessions,
+      pageviews: pageviews,
+      users: users,
+      pageviewsBySession: pageviewsPerSession,
+      bounceRate: bounceRate,
+      exitRate: exitRate,
+      newSession: newSessions,
+      avgSession: avgSessionDuration,
+      goalCompletion: goalCompletions,
+      view_id: VIEW_ID,
+      start_date: 'October 1, 2017',
+      end_date: 'October 31, 2017'
+    }
+
+    $.post('/api/monthly', newTest);
+
+      
+    
+  }
+</script>
+
+<!-- Load the JavaScript API client and Sign-in library. -->
+<script src="https://apis.google.com/js/client:platform.js"></script>
+
+</body>
+</html>
