@@ -7,24 +7,31 @@
 /* Global Styles */
 
 body {
-    margin-top: 100px;
-    background-color: #222;
+    margin: 0px;
+    background-color: #222222;
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
 
 @media(min-width:768px) {
     body {
-        margin-top: 50px;
+        margin: 0px;
     }
 }
 
 #wrapper {
     padding-left: 0;
+    background-color: #222222;
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
 
 #page-wrapper {
     width: 100%;
     padding: 0;
     background-color: #fff;
+}
+
+.page-header {
+    margin-top: 56px;
 }
 
 .huge {
@@ -46,6 +53,13 @@ body {
 
 .top-nav {
     padding: 0 15px;
+    background-color: #222222;
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+}
+
+.navbar-brand {
+    background-color: #222222;
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
 
 .top-nav>li {
@@ -58,6 +72,8 @@ body {
     padding-bottom: 15px;
     line-height: 20px;
     color: #999;
+    background-color: #222222;
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
 
 .top-nav>li>a:hover,
@@ -126,6 +142,8 @@ ul.alert-dropdown {
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
+        background-color: #222222;
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
     }
 
     .side-nav>li>a {
@@ -264,4 +282,10 @@ ul.alert-dropdown {
 
 .panel-orange > a:hover {
     color: #cfbd17;
+}
+
+.btn {
+    font-size: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }

@@ -1,10 +1,92 @@
 <div class='container'>
-	<h1>Zoltar Report!</h1>
-	<div>
-		<img src="https://media.giphy.com/media/l2JhC8EMEg2tSAXJe/giphy.gif">
-		<button class="btn btn-success btn-block" data-toggle="modal" data-target="#createModal">Add Company</button>
+	<div class="row">
+		<p><a href="https://github.com/nsd32/Zoltar-Report">ZOLTAR REPORT</a></p>	
+	</div>
+	<div class="row">
+		<img class="center-block" src="assets/images/crop-ball.gif">
+	</div>
+
+	<br>
+	<br>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<a class="btn btn-success btn-block" href="dashboard" role="button">Dashboard</a>	
+			</div>
+			<div class="col-md-4">
+				
+			</div>
+			<div class="col-md-4">
+				<button class="btn btn-info btn-block" data-toggle="modal" data-target="#createModal">Add Company</button>	
+			</div>
+		</div>
 	</div>
 </div>
+
+<style type="text/css">
+
+body {
+  background-color: #222222;
+  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+}
+
+#container {
+  width: 500px;
+  margin: auto;
+}
+		/*Neon*/
+p {
+  text-align: center;
+  font-size: 10em;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+p:nth-child(1) a {
+  color: #228DFF;
+  font-family: Impact, Charcoal, sans-serif;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+/*p:nth-child(1) a:hover {
+  color: #FF1177;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}*/
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
+
+@media (max-width: 650px) {
+  	#container {
+    	width: 100%;
+  	}
+  	p {
+    	font-size: 3.5em;
+  	}
+}
+
+#req {
+	font-size: 15px;
+}
+
+</style>
 
 
 
@@ -48,6 +130,7 @@
 						<label for="View ID" class="" id="viewIdLabel">View ID:<span style="color:red">*</span></label>
 						<input type="text" class="form-control " id="viewID-input" required>
 
+
 						<p class="" id="createRequired"><span style="color:red">*</span> Required</p>
 					</form>
 				</div>
@@ -62,4 +145,3 @@
 			</div>
 		</div>
 	</div>
-
