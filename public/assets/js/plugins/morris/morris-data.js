@@ -49,17 +49,14 @@
                 expression: 'ga:avgSessionDuration'
               },
               {
-                expression: 'ga:goalCompletionsAll'
+                expression: 'ga:entrances'
               },
-              {
-                expression: 'ga:avgPageLoadTime'
-              }
             ],
-            // dimensions: [
-            //   {
-            //     name: 'ga:sessionDurationBucket'
-            //   }
-            // ]
+            dimensions: [
+                {
+                    name: 'ga:channelGrouping'
+                }
+            ]
           }
         ]
       }
@@ -71,32 +68,117 @@
     var formattedJson = JSON.stringify(response.result, null, 2);
     // document.getElementById('query-output').value = formattedJson;
     console.log(formattedJson);
-    var sessions = response.result.reports[0].data.rows[0].metrics[0].values[0];
-    var pageviews = response.result.reports[0].data.rows[0].metrics[0].values[1];
-    var users = response.result.reports[0].data.rows[0].metrics[0].values[2];
-    var pageviewsPerSession = response.result.reports[0].data.rows[0].metrics[0].values[3];
-    var bounceRate = response.result.reports[0].data.rows[0].metrics[0].values[4];
-    var exitRate = response.result.reports[0].data.rows[0].metrics[0].values[5];
-    var newSessions = response.result.reports[0].data.rows[0].metrics[0].values[6];
-    var avgSessionDuration = response.result.reports[0].data.rows[0].metrics[0].values[7];
-    var goalCompletions = response.result.reports[0].data.rows[0].metrics[0].values[8];
-    console.log(sessions)
+    console.log('session total: ' + response.result.reports[0].data.rows[0].metrics[0].values[0]);
+    // var sessions = response.result.reports[0].data.rows[0].metrics[0].values[0];
+    // var pageviews = response.result.reports[0].data.rows[0].metrics[0].values[1];
+    // var users = response.result.reports[0].data.rows[0].metrics[0].values[2];
+    // var pageviewsPerSession = response.result.reports[0].data.rows[0].metrics[0].values[3];
+    // var bounceRate = response.result.reports[0].data.rows[0].metrics[0].values[4];
+    // var exitRate = response.result.reports[0].data.rows[0].metrics[0].values[5];
+    // var newSessions = response.result.reports[0].data.rows[0].metrics[0].values[6];
+    // var avgSessionDuration = response.result.reports[0].data.rows[0].metrics[0].values[7];
+    // var goalCompletions = response.result.reports[0].data.rows[0].metrics[0].values[8];
+    // console.log(sessions)
+    var sessionData = {
+        total: response.result.reports[0].data.totals[0].values[0],
+        direct: response.result.reports[0].data.rows[0].metrics[0].values[0],
+        organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[0],
+        paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[0],
+        referral: response.result.reports[0].data.rows[3].metrics[0].values[0],
+        social: response.result.reports[0].data.rows[4].metrics[0].values[0]
+    }
+
+    var pageviewData = {
+        total: response.result.reports[0].data.totals[0].values[1],
+        direct: response.result.reports[0].data.rows[0].metrics[0].values[1],
+        organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[1],
+        paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[1],
+        referral: response.result.reports[0].data.rows[3].metrics[0].values[1],
+        social: response.result.reports[0].data.rows[4].metrics[0].values[1]
+    }
+
+    var userData = {
+        total: response.result.reports[0].data.totals[0].values[2],
+        direct: response.result.reports[0].data.rows[0].metrics[0].values[2],
+        organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[2],
+        paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[2],
+        referral: response.result.reports[0].data.rows[3].metrics[0].values[2],
+        social: response.result.reports[0].data.rows[4].metrics[0].values[2]
+    }
+
+    var colors = ['#5cb85c', '#337ab7', '#f0ad4e', '#d9534f', '#3c1f80'];
 
      // Donut Chart
+    $('#sessions-total').text(` (Total: ${sessionData.total})`);
     Morris.Donut({
-        element: 'morris-donut-chart',
+        element: 'sessions-donut-chart',
+        colors: colors,
         data: [{
-            label: "Sessions",
-            value: sessions
+            label: "Direct",
+            value: sessionData.direct
         }, {
-            label: "Pageviews",
-            value: pageviews
+            label: "Organic Search",
+            value: sessionData.organicSearch
         }, {
-            label: "Users",
-            value: users
+            label: "Paid Search",
+            value: sessionData.paidSearch
+        }, {
+            label: "Referral",
+            value: sessionData.referral
+        }, {
+            label: "Social",
+            value: sessionData.social
         }],
         resize: true
     });
+
+
+    $('#pageview-total').text(` (Total: ${pageviewData.total})`);
+    Morris.Donut({
+        element: 'pageview-donut-chart',
+        colors: colors,
+        data: [{
+            label: "Direct",
+            value: pageviewData.direct
+        }, {
+            label: "Organic Search",
+            value: pageviewData.organicSearch
+        }, {
+            label: "Paid Search",
+            value: pageviewData.paidSearch
+        }, {
+            label: "Referral",
+            value: pageviewData.referral
+        }, {
+            label: "Social",
+            value: pageviewData.social
+        }],
+        resize: true
+    });
+
+    $('#users-total').text(` (Total: ${userData.total})`);
+    Morris.Donut({
+        element: 'users-donut-chart',
+        colors: colors,
+        data: [{
+            label: "Direct",
+            value: userData.direct
+        }, {
+            label: "Organic Search",
+            value: userData.organicSearch
+        }, {
+            label: "Paid Search",
+            value: userData.paidSearch
+        }, {
+            label: "Referral",
+            value: userData.referral
+        }, {
+            label: "Social",
+            value: userData.social
+        }],
+        resize: true
+    });
+
     
      // Area Chart
     // Morris.Area({
