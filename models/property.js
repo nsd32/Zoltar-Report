@@ -2,14 +2,6 @@ var Company = require('./Company');
 
 module.exports = function(sequelize, DataTypes) {
 	var Property = sequelize.define('Property', {
-		property_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			validate: {
-				isNumeric: true
-			}
-		},
 		property_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -20,26 +12,15 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			len: [1]
 		},
-		company_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			validate: {
-				isNumeric: true
-			}
-		},
 		defaultProperty: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: true
-
 		}
 	});
 
 	Property.associate = function(models) {
 		Property.belongsTo(models.Company, {
-			foreignKey: {
-				allowNull: false
-			}
+			foreignKey: 'company_id', targetKey: 'id'
 		});
 	};
 

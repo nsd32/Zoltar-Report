@@ -1,13 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
 	var Company = sequelize.define('Company', {
-		company_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			validate: {
-				len: [1]
-			}
-		},
 		company_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
