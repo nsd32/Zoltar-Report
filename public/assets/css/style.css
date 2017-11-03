@@ -31,7 +31,7 @@ body {
 }
 
 .page-header {
-    margin-top: 56px;
+    margin-top: 70px;
 }
 
 .huge {
@@ -54,12 +54,21 @@ body {
 .top-nav {
     padding: 0 15px;
     background-color: #222222;
-  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+    background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
 
 .navbar-brand {
     background-color: #222222;
-  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+    background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+    padding: 5px; 
+    margin-left: 72px;
+}
+
+.navbar-inverse {
+    background-color: #222;
+    border-color: #080808;
+    background-color: #222222;
+    background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
 
 .top-nav>li {
@@ -131,7 +140,7 @@ ul.alert-dropdown {
 @media(min-width:768px) {
     .side-nav {
         position: fixed;
-        top: 51px;
+        top: 74px;
         left: 225px;
         width: 225px;
         margin-left: -225px;
@@ -288,4 +297,28 @@ ul.alert-dropdown {
     font-size: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
+}
+
+#createRequired {
+    font-size: 1em;
+    text-align: left;
+}
+
+#companySubmit {
+    padding: 12px;
+    font-size: 15px;
+}
+
+#createCancel {
+    padding: 12px;
+    font-size: 15px;
+}
+
+#dashSubmit {
+    padding: 7px;
+    font-size: 15px;
+}
+
+#smallBall {
+    float: left;
 }
