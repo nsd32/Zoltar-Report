@@ -19,7 +19,7 @@ module.exports = function(app) {
 
 		
 		
-		app.get('/dashboard', function(req, res) {		
+		app.get('/dashboard*', function(req, res) {		
 			company.findAll({
 				include: [
 					{

@@ -47,37 +47,41 @@
                             <option value="2018">2018</option>
                         </select>
                         <button type="submit" class="btn btn-info" id="dashSubmit">Submit</button>
+                        <button class="btn btn-default g-signin2" data-onsuccess="queryReports"></button>
+                        
+
                     </form>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear fa-2x"> </i><b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"> </i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-file-pdf-o"></i> Export PDF</a>
-                        </li>
-                    </ul>
-                </li>
+               
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-users"></i> Customers</a>
+                        <a href="/company"><i class="fa fa-fw fa-users"></i> Customers</a>
                     </li>
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
                     </li>
+                     {{!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"> Settings</i><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-user"> </i> Profile</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-file-pdf-o"></i> Export PDF</a>
+                            </li>
+                        </ul>
+                    </li> --}}
                     <li>
-                        <p class="g-signin2" data-onsuccess="queryReports"></p>
+                        {{!-- <p class="g-signin2" data-onsuccess="queryReports"></p> --}}
                     </li>
                 </ul>
             </div>
@@ -93,12 +97,14 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Dashboard <small>Statistics Overview</small>
+                            <button class = "btn btn-primary" id="pdf"><i class="fa fa-fw fa-file-pdf-o"></i> Export PDF</button>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
+                                <i class="fa fa-dashboard"></i> Sessions
                             </li>
                         </ol>
+                        
                     </div>
                 </div>
                 <!-- /.row -->
@@ -112,7 +118,7 @@
                                         <i class="fa fa-tint fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">70</div>
+                                        <div class="huge" id="organic"></div>
                                         <div>Organic</div>
                                     </div>
                                 </div>
@@ -134,7 +140,7 @@
                                         <i class="fa fa-eye fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">195</div>
+                                        <div class="huge" id="direct"></div>
                                         <div>Direct</div>
                                     </div>
                                 </div>
@@ -156,7 +162,7 @@
                                         <i class="fa fa-money fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">11</div>
+                                        <div class="huge" id="paid"></div>
                                         <div>Paid Search</div>
                                     </div>
                                 </div>
@@ -178,7 +184,7 @@
                                         <i class="fa fa-users fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">19</div>
+                                        <div class="huge" id="referral"></div>
                                         <div>Referral</div>
                                     </div>
                                 </div>
@@ -200,7 +206,7 @@
                                         <i class="fa fa-bullhorn fa-3x" aria-hidden="true"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">11</div>
+                                        <div class="huge" id="social"></div>
                                         <div>Social</div>
                                     </div>
                                 </div>
@@ -222,7 +228,7 @@
                                         <i class="fa fa-question-circle fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
+                                        <div class="huge" id="other"></div>
                                         <div>Other</div>
                                     </div>
                                 </div>
