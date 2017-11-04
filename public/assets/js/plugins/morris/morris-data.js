@@ -17,7 +17,7 @@
             viewId: VIEW_ID,
             dateRanges: [
               {
-                startDate: '7daysAgo',
+                startDate: '1000daysAgo',
                 endDate: 'today'
               }
             ],
@@ -69,7 +69,14 @@
     
     var rowArray = response.result.reports[0].data.rows;
     var metrics = response.result.reports[0].columnHeader.metricHeader.metricHeaderEntries;
-    var colors = ['#5cb85c', '#337ab7', '#f0ad4e', '#d9534f', '#3c1f80'];
+    
+    var directColors = ['#173517', '#275927', '#367c36', '#4eb14e', '#71c171', '#5fb95f', '#83c983', '#a6d8a6', '#cae8ca'];
+    var organicColors = ['#11283c', '#163550', '#224f77', '#2d6a9f', '#337ab7', '#4c91cd', '#74a9d8', '#9cc2e3', '#c3daee'];
+    var paidColors = ['#170f02', '#462c06', '#75490a', '#a4660e', '#d38312', '#ed9c2c', '#efa743', '#f1b25b', '#f5c88a'];
+    var referralColors = ['#2a0a09', '#3f0f0e', '#691a17', '#922420', '#972925', '#d1332e', '#d64843', '#da5c58', '#e89996'];
+    var socialColors = ['#130a29', '#271452', '#3a1e7b', '#432390', '#572db9', '#7046d2', '#805bd7', '#a084e1', '#c0adeb'];
+    var otherColors = ['#666600', '#999900', '#b3b300', '#cccc00', '#e6e600', '#ffff1a', '#ffff4d', '#ffff80', '#ffffb3'];
+    var emailColors = ['#003333', '#006666', '#009999', '#00cccc', '#00e6e6', '#00ffff', '#1affff', '#80ffff', '#b3ffff']
 
     rowArray.forEach(row => {
         console.log(row.dimensions[0]);
@@ -91,7 +98,7 @@
             $('#direct-title').text(`Direct`);
             Morris.Donut({
                 element: 'direct-donut-chart',
-                
+                colors: directColors,
                 data: [{
                     label: metrics[0].name,
                     value: metricValues[0]
@@ -103,19 +110,19 @@
                     value: metricValues[2]
                 }, {
                     label: metrics[3].name,
-                    value: metricValues[3]
+                    value: Math.round(metricValues[3] * 100) / 100
                 }, {
                     label: metrics[4].name,
-                    value: metricValues[4]
+                    value: Math.round(metricValues[4] * 100) / 100
                 }, {
                     label: metrics[5].name,
-                    value: metricValues[5]
+                    value: Math.round(metricValues[5] * 100) / 100
                 }, {
                     label: metrics[6].name,
-                    value: metricValues[6]
+                    value: Math.round(metricValues[6] * 100) / 100
                 }, {
                     label: metrics[7].name,
-                    value: metricValues[7]
+                    value: Math.round(metricValues[7] * 100) / 100
                 }, {
                     label: metrics[8].name,
                     value: metricValues[8]
@@ -149,19 +156,19 @@
                     value: metricValues[2]
                 }, {
                     label: metrics[3].name,
-                    value: metricValues[3]
+                    value: Math.round(metricValues[3] * 100) / 100
                 }, {
                     label: metrics[4].name,
-                    value: metricValues[4]
+                    value: Math.round(metricValues[4] * 100) / 100
                 }, {
                     label: metrics[5].name,
-                    value: metricValues[5]
+                    value: Math.round(metricValues[5] * 100) / 100
                 }, {
                     label: metrics[6].name,
-                    value: metricValues[6]
+                    value: Math.round(metricValues[6] * 100) / 100
                 }, {
                     label: metrics[7].name,
-                    value: metricValues[7]
+                    value: Math.round(metricValues[7] * 100) / 100
                 }, {
                     label: metrics[8].name,
                     value: metricValues[8]
@@ -184,7 +191,7 @@
 
             Morris.Donut({
                 element: 'paid-donut-chart',
-                
+                colors: paidColors,
                 data: [{
                     label: metrics[0].name,
                     value: metricValues[0]
@@ -196,19 +203,19 @@
                     value: metricValues[2]
                 }, {
                     label: metrics[3].name,
-                    value: metricValues[3]
+                    value: Math.round(metricValues[3] * 100) / 100
                 }, {
                     label: metrics[4].name,
-                    value: metricValues[4]
+                    value: Math.round(metricValues[4] * 100) / 100
                 }, {
                     label: metrics[5].name,
-                    value: metricValues[5]
+                    value: Math.round(metricValues[5] * 100) / 100
                 }, {
                     label: metrics[6].name,
-                    value: metricValues[6]
+                    value: Math.round(metricValues[6] * 100) / 100
                 }, {
                     label: metrics[7].name,
-                    value: metricValues[7]
+                    value: Math.round(metricValues[7] * 100) / 100
                 }, {
                     label: metrics[8].name,
                     value: metricValues[8]
@@ -231,7 +238,7 @@
 
             Morris.Donut({
                 element: 'referral-donut-chart',
-                
+                colors: referralColors,
                 data: [{
                     label: metrics[0].name,
                     value: metricValues[0]
@@ -243,19 +250,19 @@
                     value: metricValues[2]
                 }, {
                     label: metrics[3].name,
-                    value: metricValues[3]
+                    value: Math.round(metricValues[3] * 100) / 100
                 }, {
                     label: metrics[4].name,
-                    value: metricValues[4]
+                    value: Math.round(metricValues[4] * 100) / 100
                 }, {
                     label: metrics[5].name,
-                    value: metricValues[5]
+                    value: Math.round(metricValues[5] * 100) / 100
                 }, {
                     label: metrics[6].name,
-                    value: metricValues[6]
+                    value: Math.round(metricValues[6] * 100) / 100
                 }, {
                     label: metrics[7].name,
-                    value: metricValues[7]
+                    value: Math.round(metricValues[7] * 100) / 100
                 }, {
                     label: metrics[8].name,
                     value: metricValues[8]
@@ -278,7 +285,7 @@
 
             Morris.Donut({
                 element: 'social-donut-chart',
-                
+                colors: socialColors,
                 data: [{
                     label: metrics[0].name,
                     value: metricValues[0]
@@ -290,19 +297,19 @@
                     value: metricValues[2]
                 }, {
                     label: metrics[3].name,
-                    value: metricValues[3]
+                    value: Math.round(metricValues[3] * 100) / 100
                 }, {
                     label: metrics[4].name,
-                    value: metricValues[4]
+                    value: Math.round(metricValues[4] * 100) / 100
                 }, {
                     label: metrics[5].name,
-                    value: metricValues[5]
+                    value: Math.round(metricValues[5] * 100) / 100
                 }, {
                     label: metrics[6].name,
-                    value: metricValues[6]
+                    value: Math.round(metricValues[6] * 100) / 100
                 }, {
                     label: metrics[7].name,
-                    value: metricValues[7]
+                    value: Math.round(metricValues[7] * 100) / 100
                 }, {
                     label: metrics[8].name,
                     value: metricValues[8]
@@ -325,7 +332,7 @@
 
             Morris.Donut({
                 element: 'email-donut-chart',
-                
+                colors: emailColors,
                 data: [{
                     label: metrics[0].name,
                     value: metricValues[0]
@@ -337,19 +344,19 @@
                     value: metricValues[2]
                 }, {
                     label: metrics[3].name,
-                    value: metricValues[3]
+                    value: Math.round(metricValues[3] * 100) / 100
                 }, {
                     label: metrics[4].name,
-                    value: metricValues[4]
+                    value: Math.round(metricValues[4] * 100) / 100
                 }, {
                     label: metrics[5].name,
-                    value: metricValues[5]
+                    value: Math.round(metricValues[5] * 100) / 100
                 }, {
                     label: metrics[6].name,
-                    value: metricValues[6]
+                    value: Math.round(metricValues[6] * 100) / 100
                 }, {
                     label: metrics[7].name,
-                    value: metricValues[7]
+                    value: Math.round(metricValues[7] * 100) / 100
                 }, {
                     label: metrics[8].name,
                     value: metricValues[8]
@@ -372,7 +379,7 @@
 
             Morris.Donut({
                 element: 'other-donut-chart',
-                
+                colors: otherColors,
                 data: [{
                     label: metrics[0].name,
                     value: metricValues[0]
@@ -384,19 +391,19 @@
                     value: metricValues[2]
                 }, {
                     label: metrics[3].name,
-                    value: metricValues[3]
+                    value: Math.round(metricValues[3] * 100) / 100
                 }, {
                     label: metrics[4].name,
-                    value: metricValues[4]
+                    value: Math.round(metricValues[4] * 100) / 100
                 }, {
                     label: metrics[5].name,
-                    value: metricValues[5]
+                    value: Math.round(metricValues[5] * 100) / 100
                 }, {
                     label: metrics[6].name,
-                    value: metricValues[6]
+                    value: Math.round(metricValues[6] * 100) / 100
                 }, {
                     label: metrics[7].name,
-                    value: metricValues[7]
+                    value: Math.round(metricValues[7] * 100) / 100
                 }, {
                     label: metrics[8].name,
                     value: metricValues[8]
