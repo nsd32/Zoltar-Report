@@ -5,8 +5,6 @@
   var VIEW_ID = '95712718';
   console.log(VIEW_ID);
 
-  
-
   // Query the API and print the results to the page.
   function queryReports() {
     gapi.client.request({
@@ -68,180 +66,347 @@
     var formattedJson = JSON.stringify(response.result, null, 2);
     // document.getElementById('query-output').value = formattedJson;
     console.log(formattedJson);
-    console.log('session total: ' + response.result.reports[0].data.rows[0].metrics[0].values[0]);
-    // var sessions = response.result.reports[0].data.rows[0].metrics[0].values[0];
-    // var pageviews = response.result.reports[0].data.rows[0].metrics[0].values[1];
-    // var users = response.result.reports[0].data.rows[0].metrics[0].values[2];
-    // var pageviewsPerSession = response.result.reports[0].data.rows[0].metrics[0].values[3];
-    // var bounceRate = response.result.reports[0].data.rows[0].metrics[0].values[4];
-    // var exitRate = response.result.reports[0].data.rows[0].metrics[0].values[5];
-    // var newSessions = response.result.reports[0].data.rows[0].metrics[0].values[6];
-    // var avgSessionDuration = response.result.reports[0].data.rows[0].metrics[0].values[7];
-    // var goalCompletions = response.result.reports[0].data.rows[0].metrics[0].values[8];
-    // console.log(sessions)
-    var sessionData = {
-        total: response.result.reports[0].data.totals[0].values[0],
-        direct: response.result.reports[0].data.rows[0].metrics[0].values[0],
-        organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[0],
-        paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[0],
-        referral: response.result.reports[0].data.rows[3].metrics[0].values[0],
-        social: response.result.reports[0].data.rows[4].metrics[0].values[0]
-    }
-
-    var pageviewData = {
-        total: response.result.reports[0].data.totals[0].values[1],
-        direct: response.result.reports[0].data.rows[0].metrics[0].values[1],
-        organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[1],
-        paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[1],
-        referral: response.result.reports[0].data.rows[3].metrics[0].values[1],
-        social: response.result.reports[0].data.rows[4].metrics[0].values[1]
-    }
-
-    var userData = {
-        total: response.result.reports[0].data.totals[0].values[2],
-        direct: response.result.reports[0].data.rows[0].metrics[0].values[2],
-        organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[2],
-        paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[2],
-        referral: response.result.reports[0].data.rows[3].metrics[0].values[2],
-        social: response.result.reports[0].data.rows[4].metrics[0].values[2]
-    }
-
+    
+    var rowArray = response.result.reports[0].data.rows;
+    var metrics = response.result.reports[0].columnHeader.metricHeader.metricHeaderEntries;
     var colors = ['#5cb85c', '#337ab7', '#f0ad4e', '#d9534f', '#3c1f80'];
 
-     // Donut Chart
-    $('#sessions-total').text(` (Total: ${sessionData.total})`);
-    Morris.Donut({
-        element: 'sessions-donut-chart',
-        colors: colors,
-        data: [{
-            label: "Direct",
-            value: sessionData.direct
-        }, {
-            label: "Organic Search",
-            value: sessionData.organicSearch
-        }, {
-            label: "Paid Search",
-            value: sessionData.paidSearch
-        }, {
-            label: "Referral",
-            value: sessionData.referral
-        }, {
-            label: "Social",
-            value: sessionData.social
-        }],
-        resize: true
+    rowArray.forEach(row => {
+        console.log(row.dimensions[0]);
+        console.log(row.metrics[0].values)
+        var dimension = row.dimensions[0];
+        var metricValues = row.metrics[0].values;
+
+        if (dimension === 'Direct') {
+
+            var chart = '<div class="col-lg-4">';
+            chart += '<div class="panel panel-default">';
+            chart += '<div class="panel-heading"><h3 id="direct-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+            chart += '<div class="panel-body"><div id="direct-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+            chart += '</div>';
+            chart += '</div>';
+            chart += '</div>';
+            $('#donut-chart-row').append(chart);
+
+            $('#direct-title').text(`Direct`);
+            Morris.Donut({
+                element: 'direct-donut-chart',
+                
+                data: [{
+                    label: metrics[0].name,
+                    value: metricValues[0]
+                }, {
+                    label: metrics[1].name,
+                    value: metricValues[1]
+                }, {
+                    label: metrics[2].name,
+                    value: metricValues[2]
+                }, {
+                    label: metrics[3].name,
+                    value: metricValues[3]
+                }, {
+                    label: metrics[4].name,
+                    value: metricValues[4]
+                }, {
+                    label: metrics[5].name,
+                    value: metricValues[5]
+                }, {
+                    label: metrics[6].name,
+                    value: metricValues[6]
+                }, {
+                    label: metrics[7].name,
+                    value: metricValues[7]
+                }, {
+                    label: metrics[8].name,
+                    value: metricValues[8]
+                }],
+                resize: true
+            });
+
+        } else if (dimension === 'Organic Search') {
+
+            var chart = '<div class="col-lg-4">';
+            chart += '<div class="panel panel-default">';
+            chart += '<div class="panel-heading"><h3 id="organic-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+            chart += '<div class="panel-body"><div id="organic-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+            chart += '</div>';
+            chart += '</div>';
+            chart += '</div>';
+            $('#donut-chart-row').append(chart);
+
+            $('#organic-title').text(`Organic Search`);
+            Morris.Donut({
+                element: 'organic-donut-chart',
+                
+                data: [{
+                    label: metrics[0].name,
+                    value: metricValues[0]
+                }, {
+                    label: metrics[1].name,
+                    value: metricValues[1]
+                }, {
+                    label: metrics[2].name,
+                    value: metricValues[2]
+                }, {
+                    label: metrics[3].name,
+                    value: metricValues[3]
+                }, {
+                    label: metrics[4].name,
+                    value: metricValues[4]
+                }, {
+                    label: metrics[5].name,
+                    value: metricValues[5]
+                }, {
+                    label: metrics[6].name,
+                    value: metricValues[6]
+                }, {
+                    label: metrics[7].name,
+                    value: metricValues[7]
+                }, {
+                    label: metrics[8].name,
+                    value: metricValues[8]
+                }],
+                resize: true
+            });
+
+        } else if (dimension === 'Paid Search') {
+
+            var chart = '<div class="col-lg-4">';
+            chart += '<div class="panel panel-default">';
+            chart += '<div class="panel-heading"><h3 id="paid-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+            chart += '<div class="panel-body"><div id="paid-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+            chart += '</div>';
+            chart += '</div>';
+            chart += '</div>';
+            $('#donut-chart-row').append(chart);
+
+            $('#paid-title').text(`Paid Search`);
+
+            Morris.Donut({
+                element: 'paid-donut-chart',
+                
+                data: [{
+                    label: metrics[0].name,
+                    value: metricValues[0]
+                }, {
+                    label: metrics[1].name,
+                    value: metricValues[1]
+                }, {
+                    label: metrics[2].name,
+                    value: metricValues[2]
+                }, {
+                    label: metrics[3].name,
+                    value: metricValues[3]
+                }, {
+                    label: metrics[4].name,
+                    value: metricValues[4]
+                }, {
+                    label: metrics[5].name,
+                    value: metricValues[5]
+                }, {
+                    label: metrics[6].name,
+                    value: metricValues[6]
+                }, {
+                    label: metrics[7].name,
+                    value: metricValues[7]
+                }, {
+                    label: metrics[8].name,
+                    value: metricValues[8]
+                }],
+                resize: true
+            });
+
+        } else if (dimension === 'Referral') {
+
+            var chart = '<div class="col-lg-4">';
+            chart += '<div class="panel panel-default">';
+            chart += '<div class="panel-heading"><h3 id="referral-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+            chart += '<div class="panel-body"><div id="referral-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+            chart += '</div>';
+            chart += '</div>';
+            chart += '</div>';
+            $('#donut-chart-row').append(chart);
+
+            $('#referral-title').text(`Referral`);
+
+            Morris.Donut({
+                element: 'referral-donut-chart',
+                
+                data: [{
+                    label: metrics[0].name,
+                    value: metricValues[0]
+                }, {
+                    label: metrics[1].name,
+                    value: metricValues[1]
+                }, {
+                    label: metrics[2].name,
+                    value: metricValues[2]
+                }, {
+                    label: metrics[3].name,
+                    value: metricValues[3]
+                }, {
+                    label: metrics[4].name,
+                    value: metricValues[4]
+                }, {
+                    label: metrics[5].name,
+                    value: metricValues[5]
+                }, {
+                    label: metrics[6].name,
+                    value: metricValues[6]
+                }, {
+                    label: metrics[7].name,
+                    value: metricValues[7]
+                }, {
+                    label: metrics[8].name,
+                    value: metricValues[8]
+                }],
+                resize: true
+            });
+
+        } else if (dimension === 'Social') {
+
+            var chart = '<div class="col-lg-4">';
+            chart += '<div class="panel panel-default">';
+            chart += '<div class="panel-heading"><h3 id="social-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+            chart += '<div class="panel-body"><div id="social-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+            chart += '</div>';
+            chart += '</div>';
+            chart += '</div>';
+            $('#donut-chart-row').append(chart);
+
+            $('#social-title').text(`Social`);
+
+            Morris.Donut({
+                element: 'social-donut-chart',
+                
+                data: [{
+                    label: metrics[0].name,
+                    value: metricValues[0]
+                }, {
+                    label: metrics[1].name,
+                    value: metricValues[1]
+                }, {
+                    label: metrics[2].name,
+                    value: metricValues[2]
+                }, {
+                    label: metrics[3].name,
+                    value: metricValues[3]
+                }, {
+                    label: metrics[4].name,
+                    value: metricValues[4]
+                }, {
+                    label: metrics[5].name,
+                    value: metricValues[5]
+                }, {
+                    label: metrics[6].name,
+                    value: metricValues[6]
+                }, {
+                    label: metrics[7].name,
+                    value: metricValues[7]
+                }, {
+                    label: metrics[8].name,
+                    value: metricValues[8]
+                }],
+                resize: true
+            });
+
+        } else if (dimension === 'Email') {
+
+            var chart = '<div class="col-lg-4">';
+            chart += '<div class="panel panel-default">';
+            chart += '<div class="panel-heading"><h3 id="email-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+            chart += '<div class="panel-body"><div id="email-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+            chart += '</div>';
+            chart += '</div>';
+            chart += '</div>';
+            $('#donut-chart-row').append(chart);
+
+            $('#email-title').text(`Email`);
+
+            Morris.Donut({
+                element: 'email-donut-chart',
+                
+                data: [{
+                    label: metrics[0].name,
+                    value: metricValues[0]
+                }, {
+                    label: metrics[1].name,
+                    value: metricValues[1]
+                }, {
+                    label: metrics[2].name,
+                    value: metricValues[2]
+                }, {
+                    label: metrics[3].name,
+                    value: metricValues[3]
+                }, {
+                    label: metrics[4].name,
+                    value: metricValues[4]
+                }, {
+                    label: metrics[5].name,
+                    value: metricValues[5]
+                }, {
+                    label: metrics[6].name,
+                    value: metricValues[6]
+                }, {
+                    label: metrics[7].name,
+                    value: metricValues[7]
+                }, {
+                    label: metrics[8].name,
+                    value: metricValues[8]
+                }],
+                resize: true
+            });
+
+        } else if (dimension === '(Other)') {
+
+            var chart = '<div class="col-lg-4">';
+            chart += '<div class="panel panel-default">';
+            chart += '<div class="panel-heading"><h3 id="other-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+            chart += '<div class="panel-body"><div id="other-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+            chart += '</div>';
+            chart += '</div>';
+            chart += '</div>';
+            $('#donut-chart-row').append(chart);
+
+            $('#other-title').text(`Other`);
+
+            Morris.Donut({
+                element: 'other-donut-chart',
+                
+                data: [{
+                    label: metrics[0].name,
+                    value: metricValues[0]
+                }, {
+                    label: metrics[1].name,
+                    value: metricValues[1]
+                }, {
+                    label: metrics[2].name,
+                    value: metricValues[2]
+                }, {
+                    label: metrics[3].name,
+                    value: metricValues[3]
+                }, {
+                    label: metrics[4].name,
+                    value: metricValues[4]
+                }, {
+                    label: metrics[5].name,
+                    value: metricValues[5]
+                }, {
+                    label: metrics[6].name,
+                    value: metricValues[6]
+                }, {
+                    label: metrics[7].name,
+                    value: metricValues[7]
+                }, {
+                    label: metrics[8].name,
+                    value: metricValues[8]
+                }],
+                resize: true
+            });
+
+        }
     });
 
-
-    $('#pageview-total').text(` (Total: ${pageviewData.total})`);
-    Morris.Donut({
-        element: 'pageview-donut-chart',
-        colors: colors,
-        data: [{
-            label: "Direct",
-            value: pageviewData.direct
-        }, {
-            label: "Organic Search",
-            value: pageviewData.organicSearch
-        }, {
-            label: "Paid Search",
-            value: pageviewData.paidSearch
-        }, {
-            label: "Referral",
-            value: pageviewData.referral
-        }, {
-            label: "Social",
-            value: pageviewData.social
-        }],
-        resize: true
-    });
-
-    $('#users-total').text(` (Total: ${userData.total})`);
-    Morris.Donut({
-        element: 'users-donut-chart',
-        colors: colors,
-        data: [{
-            label: "Direct",
-            value: userData.direct
-        }, {
-            label: "Organic Search",
-            value: userData.organicSearch
-        }, {
-            label: "Paid Search",
-            value: userData.paidSearch
-        }, {
-            label: "Referral",
-            value: userData.referral
-        }, {
-            label: "Social",
-            value: userData.social
-        }],
-        resize: true
-    });
-
-    $('#direct').text(response.result.reports[0].data.rows[0].metrics[0].values[0]);
-    $('#organic').text(response.result.reports[0].data.rows[1].metrics[0].values[0]);
-    $('#paid').text(response.result.reports[0].data.rows[2].metrics[0].values[0]);
-    $('#referral').text(response.result.reports[0].data.rows[3].metrics[0].values[0]);
-    $('#social').text(response.result.reports[0].data.rows[4].metrics[0].values[0]);
-
-    
-     // Area Chart
-    // Morris.Area({
-    //     element: 'morris-area-chart',
-    //     data: [{
-    //         period: 'Sunday',
-    //         pageviews: 100
-    //     }, {
-    //         period: 'Monday',
-    //         pageviews: 120
-    //     }, {
-    //         period: 'Tuesday',
-    //         pageviews: 90
-    //     }, {
-    //         period: 'Wednesday',
-    //         pageviews: 75
-    //     }, {
-    //         period: 'Thursday',
-    //         pageviews: 130
-    //     }, {
-    //         period: 'Friday',
-    //         pageviews: 50
-    //     }, {
-    //         period: 'Saturday',
-    //         pageviews: 175
-    //     }],
-    //     xkey: 'period',
-    //     ykeys: ['pageviews'],
-    //     labels: ['pageviews'],
-    //     pointSize: 2,
-    //     hideHover: 'auto',
-    //     resize: true
-    // });
-
-    // var newTest = {
-    //   sessions: sessions,
-    //   pageviews: pageviews,
-    //   users: users,
-    //   pageviewsBySession: pageviewsPerSession,
-    //   bounceRate: bounceRate,
-    //   exitRate: exitRate,
-    //   newSession: newSessions,
-    //   avgSession: avgSessionDuration,
-    //   goalCompletion: goalCompletions,
-    //   view_id: VIEW_ID,
-    //   start_date: 'October 1, 2017',
-    //   end_date: 'October 31, 2017'
-    // }
-
-    // $.post('/api/monthly', newTest);
-    
-        
-        
-
-
-
-    
   }
 
    
