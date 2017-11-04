@@ -14,7 +14,7 @@ if (config.use_env_variable) {
 
 module.exports = function(app) {
 	app.get('/', function(req, res) {
-			res.render('index',hbsObject);
+			res.render('index');
 		});
 
 		
