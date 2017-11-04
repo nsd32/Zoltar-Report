@@ -299,6 +299,18 @@ ul.alert-dropdown {
     padding-bottom: 25px;
 }
 
+.g-signin2 {
+    padding: 0px;
+    font-size: 15px;  
+}
+
+#pdf {
+    padding: 5px;
+    font-size: 15px; 
+    float:right;
+    font-weight: bold;
+}
+
 #createRequired {
     font-size: 1em;
     text-align: left;

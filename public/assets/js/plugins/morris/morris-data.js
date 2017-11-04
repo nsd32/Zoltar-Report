@@ -179,6 +179,12 @@
         resize: true
     });
 
+    $('#direct').text(response.result.reports[0].data.rows[0].metrics[0].values[0]);
+    $('#organic').text(response.result.reports[0].data.rows[1].metrics[0].values[0]);
+    $('#paid').text(response.result.reports[0].data.rows[2].metrics[0].values[0]);
+    $('#referral').text(response.result.reports[0].data.rows[3].metrics[0].values[0]);
+    $('#social').text(response.result.reports[0].data.rows[4].metrics[0].values[0]);
+
     
      // Area Chart
     // Morris.Area({
@@ -229,8 +235,12 @@
     // }
 
     // $.post('/api/monthly', newTest);
+    
+        
+        
 
-      
+
+
     
   }
 
