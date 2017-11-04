@@ -17,8 +17,8 @@ module.exports = function(sequelize, DataTypes) {
 	});
 
 	View.associate = function(models) {
-		View.belongsTo(models.Property, {
-			foreignKey: 'property_id', targetKey: 'id'
+		View.belongsTo(models.Company, {
+			foreignKey: 'company_id', targetKey: 'id'
 		});
 	};
 
