@@ -17,12 +17,34 @@
                     <form class="navbar-form pull-left">
                         <select name="" id="companySelect" class="form-control" style="width: 200px;">
                             <option value="Select Company">Select Company</option>
+                            <option value="119769061">Elementive Marketing</option>
+                            <option value="104392261">QW Consulting</option>
+                            {{#each company}}
+                                <option value="{{this.Properties.Views.ga_view_id}}">{{this.company_name}}: {{this.Properties.Views.view_name}}(viewID: {{this.Properties.Views.ga_view_id}})</option>
+                            {{/each}}
+
                         </select>
-                        <select name="" id="propertySelect" class="form-control" style="width: 200px;">
-                            <option value="Select Property">Select Property</option>
+                        <select name="" id="monthSelect" class="form-control" style="width: 200px;">
+                            <option value="Select Property">Select Month</option>
+                            <option value="0">January</option>
+                            <option value="1">February</option>
+                            <option value="2">March</option>
+                            <option value="3">April</option>
+                            <option value="4">May</option>
+                            <option value="5">June</option>
+                            <option value="6">July</option>
+                            <option value="7">August</option>
+                            <option value="8">September</option>
+                            <option value="9">October</option>
+                            <option value="10">November</option>
+                            <option value="11">December</option>
                         </select>
-                        <select name="" id="viewSelect" class="form-control" style="width: 200px;">
-                            <option value="Select View">Select View</option>
+                        <select name="" id="yearSelect" class="form-control" style="width: 200px;">
+                            <option value="Select View">Select Year</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
                         </select>
                         <button type="submit" class="btn btn-info">Submit</button>
                     </form>

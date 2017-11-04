@@ -14,16 +14,32 @@ if (config.use_env_variable) {
 
 module.exports = function(app) {
 	app.get('/', function(req, res) {
-		company.findAll({
-			
-			
-		}).then(function(dbCompany) {
-			res.render('index');
+			res.render('index',hbsObject);
 		});
-	});
-	
-	app.get('/dashboard', function(req, res) {
-		res.render('dashboard');
+
+		
+		
+		app.get('/dashboard', function(req, res) {		
+			company.findAll({
+				include: [
+					{
+						model: property, 
+						include: [
+							{ 
+							model:view
+							}
+						]  
+					}
+				]
+			}).then(function(allCompany) {
+				
+				var hbsObject = {
+					company: allCompany
+				};
+				// console.log(allCompany[0].dataValues.Properties[0].dataValues.Views[0].dataValues.view_name);
+				res.render('dashboard', hbsObject);
+				console.log('Properties: ', JSON.stringify(hbsObject, null, 2));
+			});
 	});
 
 	app.get('/company', function(req, res) {
@@ -44,7 +60,7 @@ module.exports = function(app) {
 		console.log(req.body.view_name);
 		console.log(req.body.ga_view_id);
 
-		return sequelize.transaction(function (t) {	
+		return db.sequelize.transaction(function (t) {	
 			  // chain all your queries here. make sure you return them.
 			  	return company.create({
 					company_name: req.body.company_name,
@@ -60,7 +76,8 @@ module.exports = function(app) {
 				return view.create({
 					view_name: req.body.view_name,
 					ga_view_id: req.body.ga_view_id,	
-					PropertyId: dbProperty.dataValues.id
+					PropertyId: dbProperty.dataValues.id,
+					CompanyId: dbCompany.dataValues.id
 				}, {transaction: t});
 			});
 			});
