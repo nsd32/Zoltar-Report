@@ -6,6 +6,83 @@ $(document).ready(function() {
     var startDate;
     var endDate;
 
+    var sessions = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    }
+    var pageviews = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    }
+    var users = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    }
+    // var sessions = {
+    //  organic: 0,
+    //  direct: 0,
+    //  paid: 0,
+    //  referral: 0,
+    //  social: 0,
+    //  email: 0,
+    //  other: 0
+    // }
+    // var sessions = {
+    //  organic: 0,
+    //  direct: 0,
+    //  paid: 0,
+    //  referral: 0,
+    //  social: 0,
+    //  email: 0,
+    //  other: 0
+    // }
+    // var sessions = {
+    //  organic: 0,
+    //  direct: 0,
+    //  paid: 0,
+    //  referral: 0,
+    //  social: 0,
+    //  email: 0,
+    //  other: 0
+    // }
+    // var sessions = {
+    //  organic: 0,
+    //  direct: 0,
+    //  paid: 0,
+    //  referral: 0,
+    //  social: 0,
+    //  email: 0,
+    //  other: 0
+    // }
+    // var sessions = {
+    //  organic: 0,
+    //  direct: 0,
+    //  paid: 0,
+    //  referral: 0,
+    //  social: 0,
+    //  email: 0,
+    //  other: 0
+    // }
+    
+
     $('#dashSubmit').on('click', function(event) {
         if($('#companySelect').val() == 'Select Company' || $('#monthSelect').val() == 'Select Month' || $('#yearSelect').val() == 'Select Year') {
             return;
@@ -43,179 +120,203 @@ $(document).ready(function() {
     }); 
 
 
-        function lastDayMonth(year,month){
-            endDate = new Date(year, month +1, 0).getDate();     
-        }
+    function lastDayMonth(year,month){
+        endDate = new Date(year, month +1, 0).getDate();     
+    }
 
     function queryReports() {
-        console.log('Start Date:', startDate);
-        console.log('End Date:', endDate);
-        gapi.client.request({
-          path: '/v4/reports:batchGet',
-          root: 'https://analyticsreporting.googleapis.com/',
-          method: 'POST',
-          body: {
-            reportRequests: [
+    gapi.client.request({
+      path: '/v4/reports:batchGet',
+      root: 'https://analyticsreporting.googleapis.com/',
+      method: 'POST',
+      body: {
+        reportRequests: [
+          {
+            viewId: viewID,
+            dateRanges: [
               {
-                viewId: viewID,
-                dateRanges: [
-                  {
-                    startDate: startDate,
-                    endDate: endDate
-                  }
-                ],
-                metrics: [
-                  {
-                    expression: 'ga:sessions'
-                  },
-                  {
-                    expression: 'ga:pageviews'
-                  },
-                  {
-                    expression: 'ga:users'
-                  },
-                  {
-                    expression: 'ga:pageviewsPerSession'
-                  },
-                  {
-                    expression: 'ga:bounceRate'
-                  },
-                  {
-                    expression: 'ga:exitRate'
-                  },
-                  {
-                    expression: 'ga:percentNewSessions'
-                  },
-                  {
-                    expression: 'ga:avgSessionDuration'
-                  },
-                  {
-                    expression: 'ga:entrances'
-                  },
-                ],
-                dimensions: [
-                    {
-                        name: 'ga:channelGrouping'
-                    }
-                ]
+                startDate: startDate,
+                endDate: endDate
+              }
+            ],
+            metrics: [
+              {
+                expression: 'ga:sessions'
+              },
+              {
+                expression: 'ga:pageviews'
+              },
+              {
+                expression: 'ga:users'
+              },
+              {
+                expression: 'ga:pageviewsPerSession'
+              },
+              {
+                expression: 'ga:bounceRate'
+              },
+              {
+                expression: 'ga:exitRate'
+              },
+              {
+                expression: 'ga:percentNewSessions'
+              },
+              {
+                expression: 'ga:avgSessionDuration'
+              },
+              {
+                expression: 'ga:entrances'
+              },
+            ],
+            dimensions: [
+              {
+                name: 'ga:channelGrouping'
               }
             ]
           }
-        }).then(displayResults, console.error.bind(console));
-    
+        ]
       }
-    
-      function displayResults(response) {
-        var formattedJson = JSON.stringify(response.result, null, 2);
-        // document.getElementById('query-output').value = formattedJson;
-        console.log(formattedJson);
-        console.log('session total: ' + response.result.reports[0].data.rows[0].metrics[0].values[0]);
+    }).then(displayResults, console.error.bind(console));
+  }
 
-        var sessionData = {
-            total: response.result.reports[0].data.totals[0].values[0],
-            direct: response.result.reports[0].data.rows[0].metrics[0].values[0],
-            organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[0],
-            paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[0],
-            referral: response.result.reports[0].data.rows[3].metrics[0].values[0],
-            social: response.result.reports[0].data.rows[4].metrics[0].values[0]
+  function displayResults(response) {
+    var formattedJson = JSON.stringify(response.result, null, 2);
+    // document.getElementById('query-output').value = formattedJson;
+    console.log(formattedJson);
+
+    sessions.total = response.result.reports[0].data.totals[0].values[0];
+    pageviews.total = response.result.reports[0].data.totals[0].values[1];
+    users.total = response.result.reports[0].data.totals[0].values[2];
+
+    var rowArray = response.result.reports[0].data.rows;
+
+    rowArray.forEach(row => {
+
+        console.log(row.dimensions[0]);
+        console.log(row.metrics[0].values[0])
+
+        if (row.dimensions[0] === 'Organic Search') {
+            sessions.organic = row.metrics[0].values[0];
+            pageviews.organic = row.metrics[0].values[1];
+            users.organic = row.metrics[0].values[2];
+        } else if (row.dimensions[0] === 'Direct') {
+            sessions.direct = row.metrics[0].values[0];
+            pageviews.direct = row.metrics[0].values[1];
+            users.direct = row.metrics[0].values[2];
+        } else if (row.dimensions[0] === 'Paid Search') {
+            sessions.paid = row.metrics[0].values[0];
+            pageviews.paid = row.metrics[0].values[1];
+            users.paid = row.metrics[0].values[2];
+        } else if (row.dimensions[0] === 'Referral') {
+            sessions.referral = row.metrics[0].values[0];
+            pageviews.referral = row.metrics[0].values[1];
+            users.referral = row.metrics[0].values[2];
+        } else if (row.dimensions[0] === 'Social') {
+            sessions.social = row.metrics[0].values[0];
+            pageviews.social = row.metrics[0].values[1];
+            users.social = row.metrics[0].values[2];
+        } else if (row.dimensions[0] === 'Email') {
+            sessions.email = row.metrics[0].values[0];
+            pageviews.email = row.metrics[0].values[1];
+            users.email = row.metrics[0].values[2];
+        } else if (row.dimensions[0] === '(Other)') {
+            sessions.other = row.metrics[0].values[0];
+            pageviews.other = row.metrics[0].values[1];
+            users.other = row.metrics[0].values[2];
         }
-    
-        var pageviewData = {
-            total: response.result.reports[0].data.totals[0].values[1],
-            direct: response.result.reports[0].data.rows[0].metrics[0].values[1],
-            organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[1],
-            paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[1],
-            referral: response.result.reports[0].data.rows[3].metrics[0].values[1],
-            social: response.result.reports[0].data.rows[4].metrics[0].values[1]
-        }
-    
-        var userData = {
-            total: response.result.reports[0].data.totals[0].values[2],
-            direct: response.result.reports[0].data.rows[0].metrics[0].values[2],
-            organicSearch: response.result.reports[0].data.rows[1].metrics[0].values[2],
-            paidSearch: response.result.reports[0].data.rows[2].metrics[0].values[2],
-            referral: response.result.reports[0].data.rows[3].metrics[0].values[2],
-            social: response.result.reports[0].data.rows[4].metrics[0].values[2]
-        }
-    
-        var colors = ['#5cb85c', '#337ab7', '#f0ad4e', '#d9534f', '#3c1f80'];
+    })
+
+    var colors = ['#5cb85c', '#337ab7', '#f0ad4e', '#d9534f', '#3c1f80', '#00e5ee', '#e0d039'];
     
          // Donut Chart
-    $('#sessions-total').text(` (Total: ${sessionData.total})`);
+    $('#sessions-total').text(` (Total: ${sessions.total})`);
     Morris.Donut({
         element: 'sessions-donut-chart',
         colors: colors,
         data: [{
             label: "Direct",
-            value: sessionData.direct
+            value: sessions.direct
         }, {
             label: "Organic Search",
-            value: sessionData.organicSearch
+            value: sessions.organic
         }, {
             label: "Paid Search",
-            value: sessionData.paidSearch
+            value: sessions.paid
         }, {
             label: "Referral",
-            value: sessionData.referral
+            value: sessions.referral
         }, {
             label: "Social",
-            value: sessionData.social
+            value: sessions.social
+        }, {
+            label: "Email",
+            value: sessions.email
+        }, {
+            label: "Other",
+            value: sessions.other
         }],
         resize: true
     });
 
 
-    $('#pageview-total').text(` (Total: ${pageviewData.total})`);
+    $('#pageview-total').text(` (Total: ${pageviews.total})`);
     Morris.Donut({
         element: 'pageview-donut-chart',
         colors: colors,
         data: [{
             label: "Direct",
-            value: pageviewData.direct
+            value: pageviews.direct
         }, {
             label: "Organic Search",
-            value: pageviewData.organicSearch
+            value: pageviews.organic
         }, {
             label: "Paid Search",
-            value: pageviewData.paidSearch
+            value: pageviews.paid
         }, {
             label: "Referral",
-            value: pageviewData.referral
+            value: pageviews.referral
         }, {
             label: "Social",
-            value: pageviewData.social
+            value: pageviews.social
+        }, {
+            label: "Email",
+            value: pageviews.email
+        }, {
+            label: "Other",
+            value: pageviews.other
         }],
         resize: true
     });
 
-    $('#users-total').text(` (Total: ${userData.total})`);
+    $('#users-total').text(` (Total: ${users.total})`);
     Morris.Donut({
         element: 'users-donut-chart',
         colors: colors,
         data: [{
             label: "Direct",
-            value: userData.direct
+            value: users.direct
         }, {
             label: "Organic Search",
-            value: userData.organicSearch
+            value: users.organic
         }, {
             label: "Paid Search",
-            value: userData.paidSearch
+            value: users.paid
         }, {
             label: "Referral",
-            value: userData.referral
+            value: users.referral
         }, {
             label: "Social",
-            value: userData.social
+            value: users.social
+        }, {
+            label: "Email",
+            value: users.email
+        }, {
+            label: "Other",
+            value: users.other
         }],
         resize: true
     });
-    $('#main-sessions-total').text(` (Total: ${sessionData.total})`)
-    $('#direct').text(response.result.reports[0].data.rows[0].metrics[0].values[0]);
-    $('#organic').text(response.result.reports[0].data.rows[1].metrics[0].values[0]);
-    $('#paid').text(response.result.reports[0].data.rows[2].metrics[0].values[0]);
-    $('#referral').text(response.result.reports[0].data.rows[3].metrics[0].values[0]);
-    $('#social').text(response.result.reports[0].data.rows[0].metrics[0].values[0]);
-       
-    }
+
+  }
+
 });
