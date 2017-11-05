@@ -221,7 +221,7 @@ $(document).ready(function() {
         }
     })
 
-    var colors = ['#5cb85c', '#337ab7', '#f0ad4e', '#d9534f', '#3c1f80'];
+    var colors = ['#5cb85c', '#337ab7', '#f0ad4e', '#d9534f', '#3c1f80', '#00e5ee', '#e0d039'];
     
          // Donut Chart
     $('#sessions-total').text(` (Total: ${sessions.total})`);
