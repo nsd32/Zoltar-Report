@@ -58,8 +58,8 @@ body {
 }
 
 .navbar-brand {
-    background-color: #222222;
-    background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+    /* background-color: #222222;
+    background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px; */
     padding: 5px; 
     margin-left: 72px;
 }
@@ -70,6 +70,8 @@ body {
     background-color: #222222;
     background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
 }
+
+
 
 .top-nav>li {
     display: inline-block;
@@ -82,7 +84,7 @@ body {
     line-height: 20px;
     color: #999;
     background-color: #222222;
-  background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+  /* background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px; */
 }
 
 .top-nav>li>a:hover,

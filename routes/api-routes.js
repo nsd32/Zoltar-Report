@@ -19,32 +19,43 @@ module.exports = function(app) {
 
 		
 		
-		app.get('/dashboard', function(req, res) {		
-			company.findAll({
-				include: [
-					{
-						model: property, 
-						include: [
-							{ 
-							model:view
-							}
-						]  
-					}
-				]
-			}).then(function(allCompany) {
-				
-				var hbsObject = {
-					company: allCompany
-				};
-				// console.log(allCompany[0].dataValues.Properties[0].dataValues.Views[0].dataValues.view_name);
-				res.render('dashboard', hbsObject);
-				console.log('Properties: ', JSON.stringify(hbsObject, null, 2));
-			});
+	app.get('/dashboard', function(req, res) {		
+		company.findAll({
+			include: [
+				{
+					model: property, 
+					include: [
+						{ 
+						model:view
+						}
+					]  
+				}
+			]
+		}).then(function(allCompany) {
+			
+			var hbsObject = {
+				company: allCompany
+				// property: allCompany.Properties,
+				// view: allCompany.Properties.Views
+			};
+			// console.log(allCompany[0].dataValues.Properties[0].dataValues.Views[0].dataValues.view_name);
+			res.render('dashboard', hbsObject);
+			// console.log('Properties: ', JSON.stringify(hbsObject, null, 2));
+		});
 	});
 
 	app.get('/company', function(req, res) {
 		company.findAll({
-			include: [property]		
+			include: [
+				{
+					model: property, 
+					include: [
+						{ 
+						model:view
+						}
+					]  
+				}
+			]		
 		}).then(function(dbCompany) {
 			res.json(dbCompany);
 		});
@@ -92,82 +103,7 @@ module.exports = function(app) {
 			});
 		});
 
-
-
-
-
-		// company.create({
-		// 	company_name: req.body.company_name,
-		// 	account_number: req.body.account_number		
-		// }).then(function(dbCompany) {
-		// 	res.json(dbCompany);
-		// 		console.log('Company created');
-		// 		console.log('Company ID: ', dbCompany.dataValues.id);
-		// 	property.create({
-		// 		property_name: req.body.property_name,
-		// 		tracking_id: req.body.tracking_id,	
-		// 		CompanyId: dbCompany.dataValues.id
-			
-		// 	}).then(function(dbProperty) {
-		// 		res.json(dbProperty);
-		// 			console.log('Property created');
-		// 			console.log(dbProperty);
-		// 			console.log('Property ID: ', dbProperty.dataValues.id);
-		// 		view.create({
-		// 			view_name: req.body.view_name,
-		// 			ga_view_id: req.body.ga_view_id,	
-		// 			PropertyId: dbProperty.dataValues.id
-		// 		});
-		// 	});
-		// });
-			
+	// app.get('/*', function(req, res) {
+	// 	res.render('index');
 	// });
-
-	// app.post('/property/new', function(req, res) {
-	// 	property.create({
-	// 		property_name: req.body.property_name,
-	// 		tracking_id: req.body.tracking_id,	
-	// 		CompanyId: dbcompany[0].id
-	// 	}).then(function(dbProperty) {
-	// 		res.json(dbProperty);
-	// 	});
-	// });
-
-	// app.post('/view/new', function(req, res) {
-	// 	property.create({
-	// 		view_name: req.body.view_name,
-	// 		ga_view_id: req.body.ga_view_id,	
-	// 		PropertyId: dbProperty.id
-	// 	}).then(function(dbView) {
-	// 		res.json(dbView);
-	// 	});
-	// });
-
-
-
-	app.get('/*', function(req, res) {
-		res.render('index');
-	});
 };
-
-// return sequelize.transaction(function (t) {
-	
-// 	  // chain all your queries here. make sure you return them.
-// 	  return db.Company.create({
-// 		company_name: req.body.company_name,
-// 		account_number: req.body.account_number	
-// 	  }, {transaction: t})
-// 	  .then(function (user) {
-// 		return db.Property.create({
-// 			property_name: req.body.property_name,
-// 			tracking_id: req.bosy.tracking_id
-// 		}, {transaction: t});
-// 	  });
-	
-// 	}).then(function (res) {
-// 	  // Transaction has been committed
-// 	  // result is whatever the result of the promise chain returned to the transaction callback
-// 	}).catch(function (err) {
-// 	  // Transaction has been rolled back
-// 	  // err is whatever rejected the promise chain returned to the transaction callback
-// 	});
