@@ -15,7 +15,7 @@ $(document).ready(function() {
         social: 0,
         email: 0,
         other: 0
-    }
+    };
     var pageviews = {
         total: 0,
         organic: 0,
@@ -25,7 +25,7 @@ $(document).ready(function() {
         social: 0,
         email: 0,
         other: 0
-    }
+    };
     var users = {
         total: 0,
         organic: 0,
@@ -35,52 +35,67 @@ $(document).ready(function() {
         social: 0,
         email: 0,
         other: 0
-    }
-    // var sessions = {
-    //  organic: 0,
-    //  direct: 0,
-    //  paid: 0,
-    //  referral: 0,
-    //  social: 0,
-    //  email: 0,
-    //  other: 0
-    // }
-    // var sessions = {
-    //  organic: 0,
-    //  direct: 0,
-    //  paid: 0,
-    //  referral: 0,
-    //  social: 0,
-    //  email: 0,
-    //  other: 0
-    // }
-    // var sessions = {
-    //  organic: 0,
-    //  direct: 0,
-    //  paid: 0,
-    //  referral: 0,
-    //  social: 0,
-    //  email: 0,
-    //  other: 0
-    // }
-    // var sessions = {
-    //  organic: 0,
-    //  direct: 0,
-    //  paid: 0,
-    //  referral: 0,
-    //  social: 0,
-    //  email: 0,
-    //  other: 0
-    // }
-    // var sessions = {
-    //  organic: 0,
-    //  direct: 0,
-    //  paid: 0,
-    //  referral: 0,
-    //  social: 0,
-    //  email: 0,
-    //  other: 0
-    // }
+    };
+    var pageviewsPerSession = {
+        total: 0,   
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    };
+    var bounceRate = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    };
+    var exitRate = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    };
+    var percentNewSessions = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    };
+    var avgSessionDuration = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    };
+    var entrances = {
+        total: 0,
+        organic: 0,
+        direct: 0,
+        paid: 0,
+        referral: 0,
+        social: 0,
+        email: 0,
+        other: 0
+    };
     
 
     $('#dashSubmit').on('click', function(event) {
@@ -187,6 +202,12 @@ $(document).ready(function() {
     sessions.total = response.result.reports[0].data.totals[0].values[0];
     pageviews.total = response.result.reports[0].data.totals[0].values[1];
     users.total = response.result.reports[0].data.totals[0].values[2];
+    pageviewsPerSession.total = response.result.reports[0].data.totals[0].values[3];
+    bounceRate.total = response.result.reports[0].data.totals[0].values[4];
+    exitRate.total = response.result.reports[0].data.totals[0].values[5];
+    percentNewSessions.total = response.result.reports[0].data.totals[0].values[6];
+    avgSessionDuration.total = response.result.reports[0].data.totals[0].values[7];
+    entrances.total = response.result.reports[0].data.totals[0].values[8];
 
     var rowArray = response.result.reports[0].data.rows;
 
@@ -199,30 +220,72 @@ $(document).ready(function() {
             sessions.organic = row.metrics[0].values[0];
             pageviews.organic = row.metrics[0].values[1];
             users.organic = row.metrics[0].values[2];
+            pageviewsPerSession.organic = row.metrics[0].values[3];
+            bounceRate.organic = row.metrics[0].values[4];
+            exitRate.organic = row.metrics[0].values[5];
+            percentNewSessions.organic = row.metrics[0].values[6];
+            avgSessionDuration.organic = row.metrics[0].values[7];
+            entrances.organic = row.metrics[0].values[8];
         } else if (row.dimensions[0] === 'Direct') {
             sessions.direct = row.metrics[0].values[0];
             pageviews.direct = row.metrics[0].values[1];
             users.direct = row.metrics[0].values[2];
+            pageviewsPerSession.direct = row.metrics[0].values[3];
+            bounceRate.direct = row.metrics[0].values[4];
+            exitRate.direct = row.metrics[0].values[5];
+            percentNewSessions.direct = row.metrics[0].values[6];
+            avgSessionDuration.direct = row.metrics[0].values[7];
+            entrances.direct = row.metrics[0].values[8];
         } else if (row.dimensions[0] === 'Paid Search') {
             sessions.paid = row.metrics[0].values[0];
             pageviews.paid = row.metrics[0].values[1];
             users.paid = row.metrics[0].values[2];
+            pageviewsPerSession.paid = row.metrics[0].values[3];
+            bounceRate.paid = row.metrics[0].values[4];
+            exitRate.paid = row.metrics[0].values[5];
+            percentNewSessions.paid = row.metrics[0].values[6];
+            avgSessionDuration.paid = row.metrics[0].values[7];
+            entrances.paid = row.metrics[0].values[8];
         } else if (row.dimensions[0] === 'Referral') {
             sessions.referral = row.metrics[0].values[0];
             pageviews.referral = row.metrics[0].values[1];
             users.referral = row.metrics[0].values[2];
+            pageviewsPerSession.referral = row.metrics[0].values[3];
+            bounceRate.referral = row.metrics[0].values[4];
+            exitRate.referral = row.metrics[0].values[5];
+            percentNewSessions.referral = row.metrics[0].values[6];
+            avgSessionDuration.referral = row.metrics[0].values[7];
+            entrances.referral = row.metrics[0].values[8];
         } else if (row.dimensions[0] === 'Social') {
             sessions.social = row.metrics[0].values[0];
             pageviews.social = row.metrics[0].values[1];
             users.social = row.metrics[0].values[2];
+            pageviewsPerSession.social = row.metrics[0].values[3];
+            bounceRate.social = row.metrics[0].values[4];
+            exitRate.social = row.metrics[0].values[5];
+            percentNewSessions.social = row.metrics[0].values[6];
+            avgSessionDuration.social = row.metrics[0].values[7];
+            entrances.social = row.metrics[0].values[8];
         } else if (row.dimensions[0] === 'Email') {
             sessions.email = row.metrics[0].values[0];
             pageviews.email = row.metrics[0].values[1];
             users.email = row.metrics[0].values[2];
+            pageviewsPerSession.email = row.metrics[0].values[3];
+            bounceRate.email = row.metrics[0].values[4];
+            exitRate.email = row.metrics[0].values[5];
+            percentNewSessions.email = row.metrics[0].values[6];
+            avgSessionDuration.email = row.metrics[0].values[7];
+            entrances.email = row.metrics[0].values[8];
         } else if (row.dimensions[0] === '(Other)') {
             sessions.other = row.metrics[0].values[0];
             pageviews.other = row.metrics[0].values[1];
             users.other = row.metrics[0].values[2];
+            pageviewsPerSession.other = row.metrics[0].values[3];
+            bounceRate.other = row.metrics[0].values[4];
+            exitRate.other = row.metrics[0].values[5];
+            percentNewSessions.other = row.metrics[0].values[6];
+            avgSessionDuration.other = row.metrics[0].values[7];
+            entrances.other = row.metrics[0].values[8];
         }
     })
 
@@ -316,6 +379,8 @@ $(document).ready(function() {
         }],
         resize: true
     });  
+
+    $('#channelBreakdown').removeClass('hide');
     
     $('#main-sessions-total').text(` (Total: ${sessions.total})`)
     $('#direct').text(sessions.direct);
@@ -326,8 +391,99 @@ $(document).ready(function() {
     $('#other').text(sessions.other);
     $('').text(sessions.email);
 
+    $('#totalUsers').text(users.total);
+    $('#totalEntrance').text(entrances.total);
+    $('#totalSessions').text(sessions.total);
+    $('#totalPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.total,2) + ' %');
+    $('#totalAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.total, 2));
+    $('#totalPageviews').text(pageviews.total);
+    $('#totalPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.total, 2));
+    $('#totalBounceRate').text(roundTwoDecimal.round(bounceRate.total,2) + ' %');
+    $('#totalExitRate').text(roundTwoDecimal.round(exitRate.total,2) + ' %');
+
+    $('#organicUsers').text(users.organic);
+    $('#organicEntrance').text(entrances.organic);
+    $('#organicSessions').text(sessions.organic);
+    $('#organicPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.organic,2) + ' %');
+    $('#organicAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.organic, 2));
+    $('#organicPageviews').text(pageviews.organic);
+    $('#organicPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.organic, 2));
+    $('#organicBounceRate').text(roundTwoDecimal.round(bounceRate.organic,2) + ' %');
+    $('#organicExitRate').text(roundTwoDecimal.round(exitRate.organic,2) + ' %');
+
+    $('#directUsers').text(users.direct);
+    $('#directEntrance').text(entrances.direct);
+    $('#directSessions').text(sessions.direct);
+    $('#directPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.direct,2) + ' %');
+    $('#directAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.direct, 2));
+    $('#directPageviews').text(pageviews.direct);
+    $('#directPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.direct, 2));
+    $('#directBounceRate').text(roundTwoDecimal.round(bounceRate.direct,2) + ' %');
+    $('#directExitRate').text(roundTwoDecimal.round(exitRate.direct,2) + ' %');
+
+    $('#paidUsers').text(users.paid);
+    $('#paidEntrance').text(entrances.paid);
+    $('#paidSessions').text(sessions.paid);
+    $('#paidPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.paid,2) + ' %');
+    $('#paidAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.paid, 2));
+    $('#paidPageviews').text(pageviews.paid);
+    $('#paidPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.paid, 2));
+    $('#paidBounceRate').text(roundTwoDecimal.round(bounceRate.paid,2) + ' %');
+    $('#paidExitRate').text(roundTwoDecimal.round(exitRate.paid,2) + ' %');
+
+    $('#referralUsers').text(users.referral);
+    $('#referralEntrance').text(entrances.referral);
+    $('#referralSessions').text(sessions.referral);
+    $('#referralPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.referral,2) + ' %');
+    $('#referralAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.referral, 2));
+    $('#referralPageviews').text(pageviews.referral);
+    $('#referralPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.referral, 2));
+    $('#referralBounceRate').text(roundTwoDecimal.round(bounceRate.referral,2) + ' %');
+    $('#referralExitRate').text(roundTwoDecimal.round(exitRate.referral,2) + ' %');
+
+    $('#socialUsers').text(users.social);
+    $('#socialEntrance').text(entrances.social);
+    $('#socialSessions').text(sessions.social);
+    $('#socialPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.social,2) + ' %');
+    $('#socialAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.social, 2));
+    $('#socialPageviews').text(pageviews.social);
+    $('#socialPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.social, 2));
+    $('#socialBounceRate').text(roundTwoDecimal.round(bounceRate.social,2) + ' %');
+    $('#socialExitRate').text(roundTwoDecimal.round(exitRate.social,2) + ' %');
+
+    $('#emailUsers').text(users.email);
+    $('#emailEntrance').text(entrances.email);
+    $('#emailSessions').text(sessions.email);
+    $('#emailPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.email,2) + ' %');
+    $('#emailAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.email, 2));
+    $('#emailPageviews').text(pageviews.email);
+    $('#emailPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.email, 2));
+    $('#emailBounceRate').text(roundTwoDecimal.round(bounceRate.email,2) + ' %');
+    $('#emailExitRate').text(roundTwoDecimal.round(exitRate.email,2) + ' %');
+
+    $('#otherUsers').text(users.other);
+    $('#otherEntrance').text(entrances.other);
+    $('#otherSessions').text(sessions.other);
+    $('#otherPercentNewSessions').text(roundTwoDecimal.round(percentNewSessions.other,2) + ' %');
+    $('#otherAvgSessions').text(roundTwoDecimal.round(avgSessionDuration.other, 2));
+    $('#otherPageviews').text(pageviews.other);
+    $('#otherPageviewsPerSession').text(roundTwoDecimal.round(pageviewsPerSession.other, 2));
+    $('#otherBounceRate').text(roundTwoDecimal.round(bounceRate.other,2) + ' %');
+    $('#otherExitRate').text(roundTwoDecimal.round(exitRate.other,2) + ' %');
+
 
 
   }
 
+  var roundTwoDecimal = {};
+  
+  roundTwoDecimal.round = function(number, precision) {
+      var factor = Math.pow(10, precision);
+      var tempNumber = number * factor;
+      var roundedTempNumber = Math.round(tempNumber);
+      return roundedTempNumber / factor;
+  };
+
 });
+
+
