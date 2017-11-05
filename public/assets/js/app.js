@@ -484,6 +484,24 @@ $(document).ready(function() {
       return roundedTempNumber / factor;
   };
 
+
+  // function to instantiate and format PDF
+  function genPDF() {
+    var doc = new jsPDF();
+
+    doc.fromHTML($('#channelBreakdown').get(0), 20, 20, {
+        'width':500
+    });
+
+    doc.save('Report.pdf');
+  }
+  
+  $('#pdf').click(function () {
+    
+    genPDF();
+
+  });
+
 });
 
 
