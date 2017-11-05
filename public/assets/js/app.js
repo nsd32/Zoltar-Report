@@ -101,7 +101,7 @@ $(document).ready(function() {
         year = $('#yearSelect').val();
         console.log('Selected Year: ', year);
 
-        if(month < 10) {
+        if(month <= 8) {
             startDate = `${year}-0${month+1}-01`;
         } else {
             startDate = `${year}-${month+1}-01`;
@@ -111,7 +111,7 @@ $(document).ready(function() {
         endDay = d.getDate();
         
 
-        if(month < 10) {
+        if(month <= 8) {
             endDate = `${year}-0${month+1}-${endDay}`;
         } else {
             endDate = `${year}-${month+1}-${endDay}`;
@@ -315,7 +315,18 @@ $(document).ready(function() {
             value: users.other
         }],
         resize: true
-    });
+    });  
+    
+    $('#main-sessions-total').text(` (Total: ${sessions.total})`)
+    $('#direct').text(sessions.direct);
+    $('#organic').text(sessions.organic);
+    $('#paid').text(sessions.paid);
+    $('#referral').text(sessions.referral);
+    $('#social').text(sessions.social);
+    $('#other').text(sessions.other);
+    $('').text(sessions.email);
+
+
 
   }
 
