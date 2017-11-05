@@ -6,10 +6,11 @@ $(document).ready(function() {
     var startDate;
     var endDate;
 
-    
-    
-    
     $('#dashSubmit').on('click', function(event) {
+        if($('#companySelect').val() == 'Select Company' || $('#monthSelect').val() == 'Select Month' || $('#yearSelect').val() == 'Select Year') {
+            return;
+        }
+        
         event.preventDefault();
         $('#sessions-donut-chart').empty();
         $('#pageview-donut-chart').empty();
