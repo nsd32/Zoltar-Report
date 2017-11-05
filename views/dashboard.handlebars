@@ -10,22 +10,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index"><img src="assets/images/crop-ball.gif" height="60" id="smallball"></img></a>
+                <a class="navbar-brand" href="/"><img src="assets/images/crop-ball.gif" height="60" id="smallball"></img></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav navbar-form">
                     <form class="navbar-form pull-right">
-                        <select name="" id="companySelect" class="form-control" style="width: 200px;">
+                        <select name="company" id="companySelect" class="form-control" style="width: 200px;">
                             <option value="Select Company">Select Company</option>
-                            <option value="95712718">Elementive Marketing</option>
-                            <option value="104392261">QW Consulting</option>
                             {{#each company}}
-                                <option value="{{this.Properties.Views.ga_view_id}}">{{this.company_name}}: {{this.Properties.Views.view_name}}(viewID: {{this.Properties.Views.ga_view_id}})</option>
+                                <option {{#each Properties}}{{#each Views}}value="{{ga_view_id}}"{{/each}}{{/each}}>{{company_name}} -> {{#each Properties}}{{#each Views}}{{../property_name}} -> {{view_name}}{{/each}}{{/each}}</option>
                             {{/each}}
 
+
                         </select>
-                        <select name="" id="monthSelect" class="form-control" style="width: 200px;">
-                            <option value="Select Property">Select Month</option>
+                        <select name="month" id="monthSelect" class="form-control is-valid" style="width: 200px;" title="Select Month">
+                            <option value="Select Month">Select Month</option>
                             <option value="0">January</option>
                             <option value="1">February</option>
                             <option value="2">March</option>
@@ -39,12 +38,14 @@
                             <option value="10">November</option>
                             <option value="11">December</option>
                         </select>
-                        <select name="" id="yearSelect" class="form-control" style="width: 200px;">
-                            <option value="Select View">Select Year</option>
+                        <select name="year" id="yearSelect" class="form-control" style="width: 200px;">
+                            <option value="Select Year">Select Year</option>
                             <option value="2015">2015</option>
                             <option value="2016">2016</option>
                             <option value="2017">2017</option>
                             <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
                         </select>
                         <button type="" class="btn btn-info" id="dashSubmit">Submit</button>
                         <button class="btn btn-default g-signin2" data-onsuccess="queryReports"></button>
@@ -60,10 +61,10 @@
                         <a href="/company"><i class="fa fa-fw fa-users"></i> Customers</a>
                     </li>
                     <li class="active">
-                        <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Monthly Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Reports</a>
+                        <a href="/dashboard"><i class="fa fa-fw fa-bar-chart-o"></i> Annual Dashboard</a>
                     </li>
                      {{!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"> Settings</i><b class="caret"></b></a>
@@ -108,6 +109,8 @@
                     </div>
                 </div>
                 <!-- /.row -->
+
+
 
                 <div class="row">
                     <div class="col-lg-2 col-md-6">
@@ -277,7 +280,9 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
+
                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Page Views<span id="pageview-total"></span></h3>
+
                             </div>
                             <div class="panel-body">
                                 <div id="pageview-donut-chart"></div>
