@@ -487,15 +487,27 @@ $(document).ready(function() {
 
   // function to instantiate and format PDF
   function genPDF() {
-    var doc = new jsPDF();
 
-    doc.fromHTML($('#channelBreakdown').get(0), 20, 20, {
-        'width':500
-    });
+     var columns = ["Channel Name", "Users", "Sessions", "% New Sessions", "Avg Session Duration (sec)", "Page Views", "Page Views Per Session", "Bounce Rate", "Exit Rate"];
+     var rows = [
+        ["Organic", users.organic, entrances.organic, sessions.organic, roundTwoDecimal.round(avgSessionDuration.organic, 2), pageviews.organic, roundTwoDecimal.round(pageviewsPerSession.organic, 2), roundTwoDecimal.round(bounceRate.organic, 2), roundTwoDecimal.round(exitRate.organic, 2)],
+        ["Direct", users.direct, entrances.direct, sessions.direct, roundTwoDecimal.round(avgSessionDuration.direct, 2), pageviews.direct, roundTwoDecimal.round(pageviewsPerSession.direct, 2), roundTwoDecimal.round(bounceRate.direct, 2), roundTwoDecimal.round(exitRate.direct, 2)],
+        ["Paid Search", users.paid, entrances.paid, sessions.paid, roundTwoDecimal.round(avgSessionDuration.paid, 2), pageviews.paid, roundTwoDecimal.round(pageviewsPerSession.paid, 2), roundTwoDecimal.round(bounceRate.paid, 2), roundTwoDecimal.round(exitRate.paid, 2)],
+        ["Referral", users.referral, entrances.referral, sessions.referral, roundTwoDecimal.round(avgSessionDuration.referral, 2), pageviews.referral, roundTwoDecimal.round(pageviewsPerSession.referral, 2), roundTwoDecimal.round(bounceRate.referral, 2), roundTwoDecimal.round(exitRate.referral, 2)],
+        ["Social", users.social, entrances.social, sessions.social, roundTwoDecimal.round(avgSessionDuration.social, 2), pageviews.social, roundTwoDecimal.round(pageviewsPerSession.social, 2), roundTwoDecimal.round(bounceRate.social, 2), roundTwoDecimal.round(exitRate.social, 2)],
+        ["Other", users.other, entrances.other, sessions.other, roundTwoDecimal.round(avgSessionDuration.other, 2), pageviews.other, roundTwoDecimal.round(pageviewsPerSession.other, 2), roundTwoDecimal.round(bounceRate.other, 2), roundTwoDecimal.round(exitRate.other, 2)],
+        ["Totals", users.total, entrances.total, sessions.total, roundTwoDecimal.round(avgSessionDuration.total, 2), pageviews.total, roundTwoDecimal.round(pageviewsPerSession.total, 2), roundTwoDecimal.round(bounceRate.total, 2), roundTwoDecimal.round(exitRate.total, 2)]
+     ];
 
-    doc.save('Report.pdf');
+     var doc = new jsPDF('p', 'pt');
+
+     doc.autoTable(columns, rows, {
+        tableWidth: 'auto',
+        pageBreak: 'always'
+     });
+     doc.save('table.pdf');
   }
-  
+
   $('#pdf').click(function () {
     
     genPDF();
