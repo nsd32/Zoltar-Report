@@ -2,419 +2,420 @@
 
 // $(function() {
     // Replace with your view ID.
+//151011034
+//95712718
+  // var VIEW_ID = '95712718';
+  // console.log(VIEW_ID);
 
-  var VIEW_ID = '95712718';
-  console.log(VIEW_ID);
+  // // Query the API and print the results to the page.
+  // function queryReports() {
+  //   gapi.client.request({
+  //     path: '/v4/reports:batchGet',
+  //     root: 'https://analyticsreporting.googleapis.com/',
+  //     method: 'POST',
+  //     body: {
+  //       reportRequests: [
+  //         {
+  //           viewId: VIEW_ID,
+  //           dateRanges: [
+  //             {
+  //               startDate: '1000daysAgo',
+  //               endDate: 'today'
+  //             }
+  //           ],
+  //           metrics: [
+  //             {
+  //               expression: 'ga:sessions'
+  //             },
+  //             {
+  //               expression: 'ga:pageviews'
+  //             },
+  //             {
+  //               expression: 'ga:users'
+  //             },
+  //             {
+  //               expression: 'ga:pageviewsPerSession'
+  //             },
+  //             {
+  //               expression: 'ga:bounceRate'
+  //             },
+  //             {
+  //               expression: 'ga:exitRate'
+  //             },
+  //             {
+  //               expression: 'ga:percentNewSessions'
+  //             },
+  //             {
+  //               expression: 'ga:avgSessionDuration'
+  //             },
+  //             {
+  //               expression: 'ga:entrances'
+  //             },
+  //           ],
+  //           dimensions: [
+  //             {
+  //               name: 'ga:channelGrouping'
+  //             }
+  //           ]
+  //         }
+  //       ]
+  //     }
+  //   }).then(displayResults, console.error.bind(console));
+  // }
 
-  // Query the API and print the results to the page.
-  function queryReports() {
-    gapi.client.request({
-      path: '/v4/reports:batchGet',
-      root: 'https://analyticsreporting.googleapis.com/',
-      method: 'POST',
-      body: {
-        reportRequests: [
-          {
-            viewId: VIEW_ID,
-            dateRanges: [
-              {
-                startDate: '1000daysAgo',
-                endDate: 'today'
-              }
-            ],
-            metrics: [
-              {
-                expression: 'ga:sessions'
-              },
-              {
-                expression: 'ga:pageviews'
-              },
-              {
-                expression: 'ga:users'
-              },
-              {
-                expression: 'ga:pageviewsPerSession'
-              },
-              {
-                expression: 'ga:bounceRate'
-              },
-              {
-                expression: 'ga:exitRate'
-              },
-              {
-                expression: 'ga:percentNewSessions'
-              },
-              {
-                expression: 'ga:avgSessionDuration'
-              },
-              {
-                expression: 'ga:entrances'
-              },
-            ],
-            dimensions: [
-              {
-                name: 'ga:channelGrouping'
-              }
-            ]
-          }
-        ]
-      }
-    }).then(displayResults, console.error.bind(console));
-  }
-
-  function displayResults(response) {
-    var formattedJson = JSON.stringify(response.result, null, 2);
-    // document.getElementById('query-output').value = formattedJson;
-    console.log(formattedJson);
+  // function displayResults(response) {
+  //   var formattedJson = JSON.stringify(response.result, null, 2);
+  //   // document.getElementById('query-output').value = formattedJson;
+  //   console.log(formattedJson);
     
-    var rowArray = response.result.reports[0].data.rows;
-    var metrics = response.result.reports[0].columnHeader.metricHeader.metricHeaderEntries;
+  //   var rowArray = response.result.reports[0].data.rows;
+  //   var metrics = response.result.reports[0].columnHeader.metricHeader.metricHeaderEntries;
     
-    var directColors = ['#173517', '#275927', '#367c36', '#4eb14e', '#71c171', '#5fb95f', '#83c983', '#a6d8a6', '#cae8ca'];
-    var organicColors = ['#11283c', '#163550', '#224f77', '#2d6a9f', '#337ab7', '#4c91cd', '#74a9d8', '#9cc2e3', '#c3daee'];
-    var paidColors = ['#170f02', '#462c06', '#75490a', '#a4660e', '#d38312', '#ed9c2c', '#efa743', '#f1b25b', '#f5c88a'];
-    var referralColors = ['#2a0a09', '#3f0f0e', '#691a17', '#922420', '#972925', '#d1332e', '#d64843', '#da5c58', '#e89996'];
-    var socialColors = ['#130a29', '#271452', '#3a1e7b', '#432390', '#572db9', '#7046d2', '#805bd7', '#a084e1', '#c0adeb'];
-    var otherColors = ['#666600', '#999900', '#b3b300', '#cccc00', '#e6e600', '#ffff1a', '#ffff4d', '#ffff80', '#ffffb3'];
-    var emailColors = ['#003333', '#006666', '#009999', '#00cccc', '#00e6e6', '#00ffff', '#1affff', '#80ffff', '#b3ffff']
+  //   var directColors = ['#173517', '#275927', '#367c36', '#4eb14e', '#71c171', '#5fb95f', '#83c983', '#a6d8a6', '#cae8ca'];
+  //   var organicColors = ['#11283c', '#163550', '#224f77', '#2d6a9f', '#337ab7', '#4c91cd', '#74a9d8', '#9cc2e3', '#c3daee'];
+  //   var paidColors = ['#170f02', '#462c06', '#75490a', '#a4660e', '#d38312', '#ed9c2c', '#efa743', '#f1b25b', '#f5c88a'];
+  //   var referralColors = ['#2a0a09', '#3f0f0e', '#691a17', '#922420', '#972925', '#d1332e', '#d64843', '#da5c58', '#e89996'];
+  //   var socialColors = ['#130a29', '#271452', '#3a1e7b', '#432390', '#572db9', '#7046d2', '#805bd7', '#a084e1', '#c0adeb'];
+  //   var otherColors = ['#666600', '#999900', '#b3b300', '#cccc00', '#e6e600', '#ffff1a', '#ffff4d', '#ffff80', '#ffffb3'];
+  //   var emailColors = ['#003333', '#006666', '#009999', '#00cccc', '#00e6e6', '#00ffff', '#1affff', '#80ffff', '#b3ffff']
 
-    rowArray.forEach(row => {
-        console.log(row.dimensions[0]);
-        console.log(row.metrics[0].values)
-        var dimension = row.dimensions[0];
-        var metricValues = row.metrics[0].values;
+  //   rowArray.forEach(row => {
+  //       console.log(row.dimensions[0]);
+  //       console.log(row.metrics[0].values)
+  //       var dimension = row.dimensions[0];
+  //       var metricValues = row.metrics[0].values;
 
-        if (dimension === 'Direct') {
+  //       if (dimension === 'Direct') {
 
-            var chart = '<div class="col-lg-4">';
-            chart += '<div class="panel panel-default">';
-            chart += '<div class="panel-heading"><h3 id="direct-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
-            chart += '<div class="panel-body"><div id="direct-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
-            chart += '</div>';
-            chart += '</div>';
-            chart += '</div>';
-            $('#donut-chart-row').append(chart);
+  //           var chart = '<div class="col-lg-4">';
+  //           chart += '<div class="panel panel-default">';
+  //           chart += '<div class="panel-heading"><h3 id="direct-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+  //           chart += '<div class="panel-body"><div id="direct-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           $('#donut-chart-row').append(chart);
 
-            $('#direct-title').text(`Direct`);
-            Morris.Donut({
-                element: 'direct-donut-chart',
-                colors: directColors,
-                data: [{
-                    label: metrics[0].name,
-                    value: metricValues[0]
-                }, {
-                    label: metrics[1].name,
-                    value: metricValues[1]
-                }, {
-                    label: metrics[2].name,
-                    value: metricValues[2]
-                }, {
-                    label: metrics[3].name,
-                    value: Math.round(metricValues[3] * 100) / 100
-                }, {
-                    label: metrics[4].name,
-                    value: Math.round(metricValues[4] * 100) / 100
-                }, {
-                    label: metrics[5].name,
-                    value: Math.round(metricValues[5] * 100) / 100
-                }, {
-                    label: metrics[6].name,
-                    value: Math.round(metricValues[6] * 100) / 100
-                }, {
-                    label: metrics[7].name,
-                    value: Math.round(metricValues[7] * 100) / 100
-                }, {
-                    label: metrics[8].name,
-                    value: metricValues[8]
-                }],
-                resize: true
-            });
+  //           $('#direct-title').text(`Direct`);
+  //           Morris.Donut({
+  //               element: 'direct-donut-chart',
+  //               colors: directColors,
+  //               data: [{
+  //                   label: metrics[0].name,
+  //                   value: metricValues[0]
+  //               }, {
+  //                   label: metrics[1].name,
+  //                   value: metricValues[1]
+  //               }, {
+  //                   label: metrics[2].name,
+  //                   value: metricValues[2]
+  //               }, {
+  //                   label: metrics[3].name,
+  //                   value: Math.round(metricValues[3] * 100) / 100
+  //               }, {
+  //                   label: metrics[4].name,
+  //                   value: Math.round(metricValues[4] * 100) / 100
+  //               }, {
+  //                   label: metrics[5].name,
+  //                   value: Math.round(metricValues[5] * 100) / 100
+  //               }, {
+  //                   label: metrics[6].name,
+  //                   value: Math.round(metricValues[6] * 100) / 100
+  //               }, {
+  //                   label: metrics[7].name,
+  //                   value: Math.round(metricValues[7] * 100) / 100
+  //               }, {
+  //                   label: metrics[8].name,
+  //                   value: metricValues[8]
+  //               }],
+  //               resize: true
+  //           });
 
-        } else if (dimension === 'Organic Search') {
+  //       } else if (dimension === 'Organic Search') {
 
-            var chart = '<div class="col-lg-4">';
-            chart += '<div class="panel panel-default">';
-            chart += '<div class="panel-heading"><h3 id="organic-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
-            chart += '<div class="panel-body"><div id="organic-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
-            chart += '</div>';
-            chart += '</div>';
-            chart += '</div>';
-            $('#donut-chart-row').append(chart);
+  //           var chart = '<div class="col-lg-4">';
+  //           chart += '<div class="panel panel-default">';
+  //           chart += '<div class="panel-heading"><h3 id="organic-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+  //           chart += '<div class="panel-body"><div id="organic-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           $('#donut-chart-row').append(chart);
 
-            $('#organic-title').text(`Organic Search`);
-            Morris.Donut({
-                element: 'organic-donut-chart',
+  //           $('#organic-title').text(`Organic Search`);
+  //           Morris.Donut({
+  //               element: 'organic-donut-chart',
                 
-                data: [{
-                    label: metrics[0].name,
-                    value: metricValues[0]
-                }, {
-                    label: metrics[1].name,
-                    value: metricValues[1]
-                }, {
-                    label: metrics[2].name,
-                    value: metricValues[2]
-                }, {
-                    label: metrics[3].name,
-                    value: Math.round(metricValues[3] * 100) / 100
-                }, {
-                    label: metrics[4].name,
-                    value: Math.round(metricValues[4] * 100) / 100
-                }, {
-                    label: metrics[5].name,
-                    value: Math.round(metricValues[5] * 100) / 100
-                }, {
-                    label: metrics[6].name,
-                    value: Math.round(metricValues[6] * 100) / 100
-                }, {
-                    label: metrics[7].name,
-                    value: Math.round(metricValues[7] * 100) / 100
-                }, {
-                    label: metrics[8].name,
-                    value: metricValues[8]
-                }],
-                resize: true
-            });
+  //               data: [{
+  //                   label: metrics[0].name,
+  //                   value: metricValues[0]
+  //               }, {
+  //                   label: metrics[1].name,
+  //                   value: metricValues[1]
+  //               }, {
+  //                   label: metrics[2].name,
+  //                   value: metricValues[2]
+  //               }, {
+  //                   label: metrics[3].name,
+  //                   value: Math.round(metricValues[3] * 100) / 100
+  //               }, {
+  //                   label: metrics[4].name,
+  //                   value: Math.round(metricValues[4] * 100) / 100
+  //               }, {
+  //                   label: metrics[5].name,
+  //                   value: Math.round(metricValues[5] * 100) / 100
+  //               }, {
+  //                   label: metrics[6].name,
+  //                   value: Math.round(metricValues[6] * 100) / 100
+  //               }, {
+  //                   label: metrics[7].name,
+  //                   value: Math.round(metricValues[7] * 100) / 100
+  //               }, {
+  //                   label: metrics[8].name,
+  //                   value: metricValues[8]
+  //               }],
+  //               resize: true
+  //           });
 
-        } else if (dimension === 'Paid Search') {
+  //       } else if (dimension === 'Paid Search') {
 
-            var chart = '<div class="col-lg-4">';
-            chart += '<div class="panel panel-default">';
-            chart += '<div class="panel-heading"><h3 id="paid-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
-            chart += '<div class="panel-body"><div id="paid-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
-            chart += '</div>';
-            chart += '</div>';
-            chart += '</div>';
-            $('#donut-chart-row').append(chart);
+  //           var chart = '<div class="col-lg-4">';
+  //           chart += '<div class="panel panel-default">';
+  //           chart += '<div class="panel-heading"><h3 id="paid-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+  //           chart += '<div class="panel-body"><div id="paid-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           $('#donut-chart-row').append(chart);
 
-            $('#paid-title').text(`Paid Search`);
+  //           $('#paid-title').text(`Paid Search`);
 
-            Morris.Donut({
-                element: 'paid-donut-chart',
-                colors: paidColors,
-                data: [{
-                    label: metrics[0].name,
-                    value: metricValues[0]
-                }, {
-                    label: metrics[1].name,
-                    value: metricValues[1]
-                }, {
-                    label: metrics[2].name,
-                    value: metricValues[2]
-                }, {
-                    label: metrics[3].name,
-                    value: Math.round(metricValues[3] * 100) / 100
-                }, {
-                    label: metrics[4].name,
-                    value: Math.round(metricValues[4] * 100) / 100
-                }, {
-                    label: metrics[5].name,
-                    value: Math.round(metricValues[5] * 100) / 100
-                }, {
-                    label: metrics[6].name,
-                    value: Math.round(metricValues[6] * 100) / 100
-                }, {
-                    label: metrics[7].name,
-                    value: Math.round(metricValues[7] * 100) / 100
-                }, {
-                    label: metrics[8].name,
-                    value: metricValues[8]
-                }],
-                resize: true
-            });
+  //           Morris.Donut({
+  //               element: 'paid-donut-chart',
+  //               colors: paidColors,
+  //               data: [{
+  //                   label: metrics[0].name,
+  //                   value: metricValues[0]
+  //               }, {
+  //                   label: metrics[1].name,
+  //                   value: metricValues[1]
+  //               }, {
+  //                   label: metrics[2].name,
+  //                   value: metricValues[2]
+  //               }, {
+  //                   label: metrics[3].name,
+  //                   value: Math.round(metricValues[3] * 100) / 100
+  //               }, {
+  //                   label: metrics[4].name,
+  //                   value: Math.round(metricValues[4] * 100) / 100
+  //               }, {
+  //                   label: metrics[5].name,
+  //                   value: Math.round(metricValues[5] * 100) / 100
+  //               }, {
+  //                   label: metrics[6].name,
+  //                   value: Math.round(metricValues[6] * 100) / 100
+  //               }, {
+  //                   label: metrics[7].name,
+  //                   value: Math.round(metricValues[7] * 100) / 100
+  //               }, {
+  //                   label: metrics[8].name,
+  //                   value: metricValues[8]
+  //               }],
+  //               resize: true
+  //           });
 
-        } else if (dimension === 'Referral') {
+  //       } else if (dimension === 'Referral') {
 
-            var chart = '<div class="col-lg-4">';
-            chart += '<div class="panel panel-default">';
-            chart += '<div class="panel-heading"><h3 id="referral-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
-            chart += '<div class="panel-body"><div id="referral-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
-            chart += '</div>';
-            chart += '</div>';
-            chart += '</div>';
-            $('#donut-chart-row').append(chart);
+  //           var chart = '<div class="col-lg-4">';
+  //           chart += '<div class="panel panel-default">';
+  //           chart += '<div class="panel-heading"><h3 id="referral-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+  //           chart += '<div class="panel-body"><div id="referral-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           $('#donut-chart-row').append(chart);
 
-            $('#referral-title').text(`Referral`);
+  //           $('#referral-title').text(`Referral`);
 
-            Morris.Donut({
-                element: 'referral-donut-chart',
-                colors: referralColors,
-                data: [{
-                    label: metrics[0].name,
-                    value: metricValues[0]
-                }, {
-                    label: metrics[1].name,
-                    value: metricValues[1]
-                }, {
-                    label: metrics[2].name,
-                    value: metricValues[2]
-                }, {
-                    label: metrics[3].name,
-                    value: Math.round(metricValues[3] * 100) / 100
-                }, {
-                    label: metrics[4].name,
-                    value: Math.round(metricValues[4] * 100) / 100
-                }, {
-                    label: metrics[5].name,
-                    value: Math.round(metricValues[5] * 100) / 100
-                }, {
-                    label: metrics[6].name,
-                    value: Math.round(metricValues[6] * 100) / 100
-                }, {
-                    label: metrics[7].name,
-                    value: Math.round(metricValues[7] * 100) / 100
-                }, {
-                    label: metrics[8].name,
-                    value: metricValues[8]
-                }],
-                resize: true
-            });
+  //           Morris.Donut({
+  //               element: 'referral-donut-chart',
+  //               colors: referralColors,
+  //               data: [{
+  //                   label: metrics[0].name,
+  //                   value: metricValues[0]
+  //               }, {
+  //                   label: metrics[1].name,
+  //                   value: metricValues[1]
+  //               }, {
+  //                   label: metrics[2].name,
+  //                   value: metricValues[2]
+  //               }, {
+  //                   label: metrics[3].name,
+  //                   value: Math.round(metricValues[3] * 100) / 100
+  //               }, {
+  //                   label: metrics[4].name,
+  //                   value: Math.round(metricValues[4] * 100) / 100
+  //               }, {
+  //                   label: metrics[5].name,
+  //                   value: Math.round(metricValues[5] * 100) / 100
+  //               }, {
+  //                   label: metrics[6].name,
+  //                   value: Math.round(metricValues[6] * 100) / 100
+  //               }, {
+  //                   label: metrics[7].name,
+  //                   value: Math.round(metricValues[7] * 100) / 100
+  //               }, {
+  //                   label: metrics[8].name,
+  //                   value: metricValues[8]
+  //               }],
+  //               resize: true
+  //           });
 
-        } else if (dimension === 'Social') {
+  //       } else if (dimension === 'Social') {
 
-            var chart = '<div class="col-lg-4">';
-            chart += '<div class="panel panel-default">';
-            chart += '<div class="panel-heading"><h3 id="social-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
-            chart += '<div class="panel-body"><div id="social-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
-            chart += '</div>';
-            chart += '</div>';
-            chart += '</div>';
-            $('#donut-chart-row').append(chart);
+  //           var chart = '<div class="col-lg-4">';
+  //           chart += '<div class="panel panel-default">';
+  //           chart += '<div class="panel-heading"><h3 id="social-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+  //           chart += '<div class="panel-body"><div id="social-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           $('#donut-chart-row').append(chart);
 
-            $('#social-title').text(`Social`);
+  //           $('#social-title').text(`Social`);
 
-            Morris.Donut({
-                element: 'social-donut-chart',
-                colors: socialColors,
-                data: [{
-                    label: metrics[0].name,
-                    value: metricValues[0]
-                }, {
-                    label: metrics[1].name,
-                    value: metricValues[1]
-                }, {
-                    label: metrics[2].name,
-                    value: metricValues[2]
-                }, {
-                    label: metrics[3].name,
-                    value: Math.round(metricValues[3] * 100) / 100
-                }, {
-                    label: metrics[4].name,
-                    value: Math.round(metricValues[4] * 100) / 100
-                }, {
-                    label: metrics[5].name,
-                    value: Math.round(metricValues[5] * 100) / 100
-                }, {
-                    label: metrics[6].name,
-                    value: Math.round(metricValues[6] * 100) / 100
-                }, {
-                    label: metrics[7].name,
-                    value: Math.round(metricValues[7] * 100) / 100
-                }, {
-                    label: metrics[8].name,
-                    value: metricValues[8]
-                }],
-                resize: true
-            });
+  //           Morris.Donut({
+  //               element: 'social-donut-chart',
+  //               colors: socialColors,
+  //               data: [{
+  //                   label: metrics[0].name,
+  //                   value: metricValues[0]
+  //               }, {
+  //                   label: metrics[1].name,
+  //                   value: metricValues[1]
+  //               }, {
+  //                   label: metrics[2].name,
+  //                   value: metricValues[2]
+  //               }, {
+  //                   label: metrics[3].name,
+  //                   value: Math.round(metricValues[3] * 100) / 100
+  //               }, {
+  //                   label: metrics[4].name,
+  //                   value: Math.round(metricValues[4] * 100) / 100
+  //               }, {
+  //                   label: metrics[5].name,
+  //                   value: Math.round(metricValues[5] * 100) / 100
+  //               }, {
+  //                   label: metrics[6].name,
+  //                   value: Math.round(metricValues[6] * 100) / 100
+  //               }, {
+  //                   label: metrics[7].name,
+  //                   value: Math.round(metricValues[7] * 100) / 100
+  //               }, {
+  //                   label: metrics[8].name,
+  //                   value: metricValues[8]
+  //               }],
+  //               resize: true
+  //           });
 
-        } else if (dimension === 'Email') {
+  //       } else if (dimension === 'Email') {
 
-            var chart = '<div class="col-lg-4">';
-            chart += '<div class="panel panel-default">';
-            chart += '<div class="panel-heading"><h3 id="email-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
-            chart += '<div class="panel-body"><div id="email-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
-            chart += '</div>';
-            chart += '</div>';
-            chart += '</div>';
-            $('#donut-chart-row').append(chart);
+  //           var chart = '<div class="col-lg-4">';
+  //           chart += '<div class="panel panel-default">';
+  //           chart += '<div class="panel-heading"><h3 id="email-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+  //           chart += '<div class="panel-body"><div id="email-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           $('#donut-chart-row').append(chart);
 
-            $('#email-title').text(`Email`);
+  //           $('#email-title').text(`Email`);
 
-            Morris.Donut({
-                element: 'email-donut-chart',
-                colors: emailColors,
-                data: [{
-                    label: metrics[0].name,
-                    value: metricValues[0]
-                }, {
-                    label: metrics[1].name,
-                    value: metricValues[1]
-                }, {
-                    label: metrics[2].name,
-                    value: metricValues[2]
-                }, {
-                    label: metrics[3].name,
-                    value: Math.round(metricValues[3] * 100) / 100
-                }, {
-                    label: metrics[4].name,
-                    value: Math.round(metricValues[4] * 100) / 100
-                }, {
-                    label: metrics[5].name,
-                    value: Math.round(metricValues[5] * 100) / 100
-                }, {
-                    label: metrics[6].name,
-                    value: Math.round(metricValues[6] * 100) / 100
-                }, {
-                    label: metrics[7].name,
-                    value: Math.round(metricValues[7] * 100) / 100
-                }, {
-                    label: metrics[8].name,
-                    value: metricValues[8]
-                }],
-                resize: true
-            });
+  //           Morris.Donut({
+  //               element: 'email-donut-chart',
+  //               colors: emailColors,
+  //               data: [{
+  //                   label: metrics[0].name,
+  //                   value: metricValues[0]
+  //               }, {
+  //                   label: metrics[1].name,
+  //                   value: metricValues[1]
+  //               }, {
+  //                   label: metrics[2].name,
+  //                   value: metricValues[2]
+  //               }, {
+  //                   label: metrics[3].name,
+  //                   value: Math.round(metricValues[3] * 100) / 100
+  //               }, {
+  //                   label: metrics[4].name,
+  //                   value: Math.round(metricValues[4] * 100) / 100
+  //               }, {
+  //                   label: metrics[5].name,
+  //                   value: Math.round(metricValues[5] * 100) / 100
+  //               }, {
+  //                   label: metrics[6].name,
+  //                   value: Math.round(metricValues[6] * 100) / 100
+  //               }, {
+  //                   label: metrics[7].name,
+  //                   value: Math.round(metricValues[7] * 100) / 100
+  //               }, {
+  //                   label: metrics[8].name,
+  //                   value: metricValues[8]
+  //               }],
+  //               resize: true
+  //           });
 
-        } else if (dimension === '(Other)') {
+  //       } else if (dimension === '(Other)') {
 
-            var chart = '<div class="col-lg-4">';
-            chart += '<div class="panel panel-default">';
-            chart += '<div class="panel-heading"><h3 id="other-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
-            chart += '<div class="panel-body"><div id="other-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
-            chart += '</div>';
-            chart += '</div>';
-            chart += '</div>';
-            $('#donut-chart-row').append(chart);
+  //           var chart = '<div class="col-lg-4">';
+  //           chart += '<div class="panel panel-default">';
+  //           chart += '<div class="panel-heading"><h3 id="other-title" class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i><span id="chart-total"></span></h3></div>'
+  //           chart += '<div class="panel-body"><div id="other-donut-chart"></div><div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div></div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           chart += '</div>';
+  //           $('#donut-chart-row').append(chart);
 
-            $('#other-title').text(`Other`);
+  //           $('#other-title').text(`Other`);
 
-            Morris.Donut({
-                element: 'other-donut-chart',
-                colors: otherColors,
-                data: [{
-                    label: metrics[0].name,
-                    value: metricValues[0]
-                }, {
-                    label: metrics[1].name,
-                    value: metricValues[1]
-                }, {
-                    label: metrics[2].name,
-                    value: metricValues[2]
-                }, {
-                    label: metrics[3].name,
-                    value: Math.round(metricValues[3] * 100) / 100
-                }, {
-                    label: metrics[4].name,
-                    value: Math.round(metricValues[4] * 100) / 100
-                }, {
-                    label: metrics[5].name,
-                    value: Math.round(metricValues[5] * 100) / 100
-                }, {
-                    label: metrics[6].name,
-                    value: Math.round(metricValues[6] * 100) / 100
-                }, {
-                    label: metrics[7].name,
-                    value: Math.round(metricValues[7] * 100) / 100
-                }, {
-                    label: metrics[8].name,
-                    value: metricValues[8]
-                }],
-                resize: true
-            });
+  //           Morris.Donut({
+  //               element: 'other-donut-chart',
+  //               colors: otherColors,
+  //               data: [{
+  //                   label: metrics[0].name,
+  //                   value: metricValues[0]
+  //               }, {
+  //                   label: metrics[1].name,
+  //                   value: metricValues[1]
+  //               }, {
+  //                   label: metrics[2].name,
+  //                   value: metricValues[2]
+  //               }, {
+  //                   label: metrics[3].name,
+  //                   value: Math.round(metricValues[3] * 100) / 100
+  //               }, {
+  //                   label: metrics[4].name,
+  //                   value: Math.round(metricValues[4] * 100) / 100
+  //               }, {
+  //                   label: metrics[5].name,
+  //                   value: Math.round(metricValues[5] * 100) / 100
+  //               }, {
+  //                   label: metrics[6].name,
+  //                   value: Math.round(metricValues[6] * 100) / 100
+  //               }, {
+  //                   label: metrics[7].name,
+  //                   value: Math.round(metricValues[7] * 100) / 100
+  //               }, {
+  //                   label: metrics[8].name,
+  //                   value: metricValues[8]
+  //               }],
+  //               resize: true
+  //           });
 
-        }
-    });
+  //       }
+  //   });
 
-  }
+  // }
 
    
 
