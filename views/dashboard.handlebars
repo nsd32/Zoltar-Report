@@ -248,20 +248,6 @@
                 </div>
                 <!-- /.row -->
 
-                {{!-- <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Customers</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div id="morris-area-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row --> --}}
-
                 <div class="row" id="donut-chart-row">
                     <div class="col-lg-4">
                         <div class="panel panel-default">
@@ -308,6 +294,149 @@
                     </div>
                 </div>   
                 <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Channel Breakdown</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered hide" id="channelBreakdown">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Channel Name</th>
+                                            <th scope="col">Users</th>
+                                            <th scope="col">Entrances</th>
+                                            <th scope="col">Sessions</th>
+                                            <th scope="col">% New Sessions</th>
+                                            <th scope="col">Avg. Session Duration (sec)</th>
+                                            <th scope="col">Page Views</th>
+                                            <th scope="col">Page Views per Session</th>
+                                            <th scope="col">Bounce Rate</th>
+                                            <th scope="col">Exit Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Organic</th>
+                                            <th id="organicUsers"></th>
+                                            <th id="organicEntrance"></th>
+                                            <th id="organicSessions"></th>
+                                            <th id="organicPercentNewSessions"></th>
+                                            <th id="organicAvgSessions"></th>
+                                            <th id="organicPageviews"></th>
+                                            <th id="organicPageviewsPerSession"></th>
+                                            <th id="organicBounceRate"></th>
+                                            <th id="organicExitRate"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Direct</th>
+                                            <th id="directUsers"></th>
+                                            <th id="directEntrance"></th>
+                                            <th id="directSessions"></th>
+                                            <th id="directPercentNewSessions"></th>
+                                            <th id="directAvgSessions"></th>
+                                            <th id="directPageviews"></th>
+                                            <th id="directPageviewsPerSession"></th>
+                                            <th id="directBounceRate"></th>
+                                            <th id="directExitRate"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Paid Search</th>
+                                            <th id="paidUsers"></th>
+                                            <th id="paidEntrance"></th>
+                                            <th id="paidSessions"></th>
+                                            <th id="paidPercentNewSessions"></th>
+                                            <th id="paidAvgSessions"></th>
+                                            <th id="paidPageviews"></th>
+                                            <th id="paidPageviewsPerSession"></th>
+                                            <th id="paidBounceRate"></th>
+                                            <th id="paidExitRate"></th>
+                                        </tr>      
+                                        <tr>
+                                            <th scope="row">Referral</th>
+                                            <th id="referralUsers"></th>
+                                            <th id="referralEntrance"></th>
+                                            <th id="referralSessions"></th>
+                                            <th id="referralPercentNewSessions"></th>
+                                            <th id="referralAvgSessions"></th>
+                                            <th id="referralPageviews"></th>
+                                            <th id="referralPageviewsPerSession"></th>
+                                            <th id="referralBounceRate"></th>
+                                            <th id="referralExitRate"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Social</th>
+                                            <th id="socialUsers"></th>
+                                            <th id="socialEntrance"></th>
+                                            <th id="socialSessions"></th>
+                                            <th id="socialPercentNewSessions"></th>
+                                            <th id="socialAvgSessions"></th>
+                                            <th id="socialPageviews"></th>
+                                            <th id="socialPageviewsPerSession"></th>
+                                            <th id="socialBounceRate"></th>
+                                            <th id="socialExitRate"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <th id="otherUsers"></th>
+                                            <th id="otherEntrance"></th>
+                                            <th id="otherSessions"></th>
+                                            <th id="otherPercentNewSessions"></th>
+                                            <th id="otherAvgSessions"></th>
+                                            <th id="otherPageviews"></th>
+                                            <th id="otherPageviewsPerSession"></th>
+                                            <th id="otherBounceRate"></th>
+                                            <th id="otherExitRate"></th>
+                                        </tr> 
+                                        <tr>
+                                            <th scope="row">Other</th>
+                                            <th id="emailUsers"></th>
+                                            <th id="emailEntrance"></th>
+                                            <th id="emailSessions"></th>
+                                            <th id="emailPercentNewSessions"></th>
+                                            <th id="emailAvgSessions"></th>
+                                            <th id="emailPageviews"></th>
+                                            <th id="emailPageviewsPerSession"></th>
+                                            <th id="emailBounceRate"></th>
+                                            <th id="emailExitRate"></th>
+                                        </tr>  
+                                        <tr class="table-primary">
+                                            <th scope="row">Totals</th>
+                                            <th id="totalUsers"></th>
+                                            <th id="totalEntrance"></th>
+                                            <th id="totalSessions"></th>
+                                            <th id="totalPercentNewSessions"></th>
+                                            <th id="totalAvgSessions"></th>
+                                            <th id="totalPageviews"></th>
+                                            <th id="totalPageviewsPerSession"></th>
+                                            <th id="totalBounceRate"></th>
+                                            <th id="totalExitRate"></th>
+                                        </tr>                                                                     
+
+                                        
+                                    </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                {{!-- <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Customers</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-area-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row --> --}}
 
             </div>
             <!-- /.container-fluid -->
