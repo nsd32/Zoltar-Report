@@ -2,6 +2,7 @@
 
 // $(function() {
     // Replace with your view ID.
+
   var VIEW_ID = '95712718';
   console.log(VIEW_ID);
 
@@ -51,15 +52,14 @@
               },
             ],
             dimensions: [
-                {
-                    name: 'ga:channelGrouping'
-                }
+              {
+                name: 'ga:channelGrouping'
+              }
             ]
           }
         ]
       }
     }).then(displayResults, console.error.bind(console));
-
   }
 
   function displayResults(response) {

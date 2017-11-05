@@ -10,14 +10,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index"><img src="assets/images/crop-ball.gif" height="70" width="70" id="smallball"></img></a>
+                <a class="navbar-brand" href="index"><img src="assets/images/crop-ball.gif" height="60" id="smallball"></img></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav navbar-form">
                     <form class="navbar-form pull-right">
                         <select name="" id="companySelect" class="form-control" style="width: 200px;">
                             <option value="Select Company">Select Company</option>
-                            <option value="119769061">Elementive Marketing</option>
+                            <option value="95712718">Elementive Marketing</option>
                             <option value="104392261">QW Consulting</option>
                             {{#each company}}
                                 <option value="{{this.Properties.Views.ga_view_id}}">{{this.company_name}}: {{this.Properties.Views.view_name}}(viewID: {{this.Properties.Views.ga_view_id}})</option>
@@ -46,7 +46,7 @@
                             <option value="2017">2017</option>
                             <option value="2018">2018</option>
                         </select>
-                        <button type="submit" class="btn btn-info" id="dashSubmit">Submit</button>
+                        <button type="" class="btn btn-info" id="dashSubmit">Submit</button>
                         <button class="btn btn-default g-signin2" data-onsuccess="queryReports"></button>
                         
 
@@ -101,7 +101,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Sessions
+                                <h5><i class="fa fa-dashboard"></i> Sessions<span id="main-sessions-total"></span></h5>
                             </li>
                         </ol>
                         
@@ -245,7 +245,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="row">
+                {{!-- <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -257,7 +257,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
+                <!-- /.row --> --}}
 
                 <div class="row" id="donut-chart-row">
                     {{!-- <div class="col-lg-4">
