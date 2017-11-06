@@ -499,12 +499,133 @@ $(document).ready(function() {
         ["Totals", users.total, entrances.total, sessions.total, roundTwoDecimal.round(avgSessionDuration.total, 2), pageviews.total, roundTwoDecimal.round(pageviewsPerSession.total, 2), roundTwoDecimal.round(bounceRate.total, 2), roundTwoDecimal.round(exitRate.total, 2)]
      ];
 
-     var doc = new jsPDF('p', 'pt');
+     var columnsOrganic = ["Organic", "Details"];
+     var rowsOrganic = [
+        ["Users", users.organic],
+        ["Sessions", entrances.organic],
+        ["% New Sessions", sessions.organic],
+        ["Avg Session Duration(sec)", roundTwoDecimal.round(avgSessionDuration.organic, 2)],
+        ["Page Views", pageviews.organic],
+        ["Page Views Per Session", roundTwoDecimal.round(pageviewsPerSession.organic, 2)],
+        ["Bounce Rate", roundTwoDecimal.round(bounceRate.organic, 2)],
+        ["Exit Rate", roundTwoDecimal.round(exitRate.organic, 2)]
+     ];
+
+     var columnsDirect = ["Direct", "Details"];
+     var rowsDirect = [
+        ["Users", users.direct],
+        ["Sessions", entrances.direct],
+        ["% New Sessions", sessions.direct],
+        ["Avg Session Duration(sec)", roundTwoDecimal.round(avgSessionDuration.direct, 2)],
+        ["Page Views", pageviews.direct],
+        ["Page Views Per Session", roundTwoDecimal.round(pageviewsPerSession.direct, 2)],
+        ["Bounce Rate", roundTwoDecimal.round(bounceRate.direct, 2)],
+        ["Exit Rate", roundTwoDecimal.round(exitRate.direct, 2)]
+     ];
+
+     var columnsPaid = ["Paid", "Details"];
+     var rowsPaid = [
+        ["Users", users.paid],
+        ["Sessions", entrances.paid],
+        ["% New Sessions", sessions.paid],
+        ["Avg Session Duration(sec)", roundTwoDecimal.round(avgSessionDuration.paid, 2)],
+        ["Page Views", pageviews.paid],
+        ["Page Views Per Session", roundTwoDecimal.round(pageviewsPerSession.paid, 2)],
+        ["Bounce Rate", roundTwoDecimal.round(bounceRate.paid, 2)],
+        ["Exit Rate", roundTwoDecimal.round(exitRate.paid, 2)]
+     ];
+
+     var columnsReferral = ["Referral", "Details"];
+     var rowsReferral = [
+        ["Users", users.referral],
+        ["Sessions", entrances.referral],
+        ["% New Sessions", sessions.referral],
+        ["Avg Session Duration(sec)", roundTwoDecimal.round(avgSessionDuration.referral, 2)],
+        ["Page Views", pageviews.referral],
+        ["Page Views Per Session", roundTwoDecimal.round(pageviewsPerSession.referral, 2)],
+        ["Bounce Rate", roundTwoDecimal.round(bounceRate.referral, 2)],
+        ["Exit Rate", roundTwoDecimal.round(exitRate.referral, 2)]
+     ];
+
+     var columnsSocial = ["Social", "Details"];
+     var rowsSocial = [
+        ["Users", users.social],
+        ["Sessions", entrances.social],
+        ["% New Sessions", sessions.social],
+        ["Avg Session Duration(sec)", roundTwoDecimal.round(avgSessionDuration.social, 2)],
+        ["Page Views", pageviews.social],
+        ["Page Views Per Session", roundTwoDecimal.round(pageviewsPerSession.social, 2)],
+        ["Bounce Rate", roundTwoDecimal.round(bounceRate.social, 2)],
+        ["Exit Rate", roundTwoDecimal.round(exitRate.social, 2)]
+     ];
+
+     var columnsOther = ["Other", "Details"];
+     var rowsOther = [
+        ["Users", users.other],
+        ["Sessions", entrances.other],
+        ["% New Sessions", sessions.other],
+        ["Avg Session Duration(sec)", roundTwoDecimal.round(avgSessionDuration.other, 2)],
+        ["Page Views", pageviews.other],
+        ["Page Views Per Session", roundTwoDecimal.round(pageviewsPerSession.other, 2)],
+        ["Bounce Rate", roundTwoDecimal.round(bounceRate.other, 2)],
+        ["Exit Rate", roundTwoDecimal.round(exitRate.other, 2)]
+     ];
+
+     var columnsTotals = ["Totals", "Details"];
+     var rowsTotals = [
+        ["Users", users.total],
+        ["Sessions", entrances.total],
+        ["% New Sessions", sessions.total],
+        ["Avg Session Duration(sec)", roundTwoDecimal.round(avgSessionDuration.total, 2)],
+        ["Page Views", pageviews.total],
+        ["Page Views Per Session", roundTwoDecimal.round(pageviewsPerSession.total, 2)],
+        ["Bounce Rate", roundTwoDecimal.round(bounceRate.total, 2)],
+        ["Exit Rate", roundTwoDecimal.round(exitRate.total, 2)]
+     ];
+
+     var doc = new jsPDF('landscape');
 
      doc.autoTable(columns, rows, {
+        // startY: doc.autoTableEndPosY() + 10,
         tableWidth: 'auto',
-        pageBreak: 'always'
+        pageBreak: 'auto'
      });
+     doc.autoTable(columnsOrganic, rowsOrganic, {
+        startY: doc.autoTableEndPosY() + 50,
+        tableWidth: 'auto',
+        pageBreak: 'auto'
+     });
+     doc.autoTable(columnsDirect, rowsDirect, {
+        startY: doc.autoTableEndPosY() + 50,
+        tableWidth: 'auto',
+        pageBreak: 'auto'
+     });
+     doc.autoTable(columnsPaid, rowsPaid, {
+        startY: doc.autoTableEndPosY() + 40,
+        tableWidth: 'auto',
+        pageBreak: 'auto'
+     });
+     doc.autoTable(columnsReferral, rowsReferral, {
+        startY: doc.autoTableEndPosY() + 50,
+        tableWidth: 'auto',
+        pageBreak: 'auto'
+     });
+     doc.autoTable(columnsSocial, rowsSocial, {
+        startY: doc.autoTableEndPosY() + 40,
+        tableWidth: 'auto',
+        pageBreak: 'auto'
+     });
+     doc.autoTable(columnsOther, rowsOther, {
+        startY: doc.autoTableEndPosY() + 50,
+        tableWidth: 'auto',
+        pageBreak: 'auto'
+     });
+     doc.autoTable(columnsTotals, rowsTotals, {
+        startY: doc.autoTableEndPosY() + 40,
+        tableWidth: 'auto',
+        pageBreak: 'auto'
+     });
+     
      doc.save('table.pdf');
   }
 
