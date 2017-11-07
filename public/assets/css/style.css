@@ -336,3 +336,10 @@ ul.alert-dropdown {
 #smallBall {
     float: left;
 }
+
+.btn-danger {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    text-align: left;
+}

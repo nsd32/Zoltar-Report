@@ -1,4 +1,4 @@
-var Company = require('./Company');
+var Company = require('./company');
 
 module.exports = function(sequelize, DataTypes) {
 	var Property = sequelize.define('Property', {
