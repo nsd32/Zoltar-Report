@@ -591,39 +591,32 @@ $(document).ready(function() {
         pageBreak: 'auto'
      });
      doc.autoTable(columnsOrganic, rowsOrganic, {
-        startY: doc.autoTableEndPosY() + 50,
-        tableWidth: 'auto',
-        pageBreak: 'auto'
+        startY: doc.autoTableEndPosY() + 40,
+        tableWidth: 100
      });
      doc.autoTable(columnsDirect, rowsDirect, {
         startY: doc.autoTableEndPosY() + 50,
-        tableWidth: 'auto',
-        pageBreak: 'auto'
+        tableWidth: 100
      });
      doc.autoTable(columnsPaid, rowsPaid, {
         startY: doc.autoTableEndPosY() + 40,
-        tableWidth: 'auto',
-        pageBreak: 'auto'
+        tableWidth: 100
      });
      doc.autoTable(columnsReferral, rowsReferral, {
         startY: doc.autoTableEndPosY() + 50,
-        tableWidth: 'auto',
-        pageBreak: 'auto'
+        tableWidth: 100
      });
      doc.autoTable(columnsSocial, rowsSocial, {
         startY: doc.autoTableEndPosY() + 40,
-        tableWidth: 'auto',
-        pageBreak: 'auto'
+        tableWidth: 100
      });
      doc.autoTable(columnsOther, rowsOther, {
         startY: doc.autoTableEndPosY() + 50,
-        tableWidth: 'auto',
-        pageBreak: 'auto'
+        tableWidth: 100
      });
      doc.autoTable(columnsTotals, rowsTotals, {
         startY: doc.autoTableEndPosY() + 40,
-        tableWidth: 'auto',
-        pageBreak: 'auto'
+        tableWidth: 100
      });
      
      doc.save('table.pdf');
