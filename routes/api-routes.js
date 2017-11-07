@@ -1,16 +1,17 @@
 var db = require('../models');
-var Sequelize = require('sequelize');
+// var Sequelize = require('sequelize');
 var company = db.Company;
 var property = db.Property;
+var monthlyUsage = db.MonthUsage;
 var view = db.View;
-var env       = process.env.NODE_ENV || 'development';
-var config    = require(__dirname + '/../config/config.json')[env];
+// var env       = process.env.NODE_ENV || 'development';
+// var config    = require(__dirname + '/../config/config.json')[env];
 
-if (config.use_env_variable) {
-	var sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
-	var sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// if (config.use_env_variable) {
+// 	var sequelize = new Sequelize(process.env[config.use_env_variable]);
+// } else {
+// 	var sequelize = new Sequelize(config.database, config.username, config.password, config);
+// }
 
 module.exports = function(app) {
 	app.get('/', function(req, res) {
@@ -35,8 +36,6 @@ module.exports = function(app) {
 			
 			var hbsObject = {
 				company: allCompany
-				// property: allCompany.Properties,
-				// view: allCompany.Properties.Views
 			};
 			// console.log(allCompany[0].dataValues.Properties[0].dataValues.Views[0].dataValues.view_name);
 			res.render('dashboard', hbsObject);
@@ -44,7 +43,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('/company', function(req, res) {
+	app.get('/customer', function(req, res) {
 		company.findAll({
 			include: [
 				{
@@ -57,10 +56,14 @@ module.exports = function(app) {
 				}
 			]		
 		}).then(function(dbCompany) {
-			res.json(dbCompany);
+
+			var hbsObject = {
+				companyInfo: dbCompany
+			};
+
+			res.render('customer', hbsObject);
 		});
 	});
-
 
 	app.post('/company/new', function(req, res) {
 
@@ -103,6 +106,41 @@ module.exports = function(app) {
 			});
 		});
 
+		app.post('/monthUsage/new/:id', function(req, res) {
+			return db.sequelize.transaction(function (t) {	
+				// chain all your queries here. make sure you return them.
+				return view.findAll({
+					where: {
+						ga_view_id: req.params.ga_view_id	
+					}
+				}, {transaction: t}).then(function (dbView) {
+					  console.log('Company Created');
+				return monthlyUsage.create({
+						sessions:req.body.sessions,
+						pageviews:req.body.pageviews,
+						users:req.body.users,
+						pageviewsBySession: req.body.pageviewsPerSession,
+						exitRate:req.body.exitRate,
+						bounceRate:req.body.bounceRate,
+						newSession:req.body.newSession,
+						avgSession:req.body.avgSession,
+						channel:req.body.channel,
+						start_date:req.body.start_date,
+						end_date:req.body.end_date,
+						ViewId: dbView.id
+					}, {transaction: t});		
+			  	});
+			  
+			}).then(function (result) {
+				  console.log('View Created');
+				  // Transaction has been committed
+				  // result is whatever the result of the promise chain returned to the transaction callback
+			  }).catch(function (err) {
+				  // Transaction has been rolled back
+				  // err is whatever rejected the promise chain returned to the transaction callback
+			  });
+		  });	
+			
 	// app.get('/*', function(req, res) {
 	// 	res.render('index');
 	// });

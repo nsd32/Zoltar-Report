@@ -301,9 +301,23 @@ ul.alert-dropdown {
     padding-bottom: 25px;
 }
 
+.edit {
+    font-size: 15px;
+    padding: 5px 10px;
+}
+
+.delete {
+    font-size: 15px;
+    padding: 5px 10px;
+}
+
 .g-signin2 {
     padding: 0px;
     font-size: 15px;  
+}
+
+#viewDelete {
+    float: right;
 }
 
 #pdf {

@@ -16,18 +16,18 @@ module.exports = function(sequelize, DataTypes) {
 		Company.hasMany(models.Property, { 
 			onDelete: 'cascade'
 		});
-		Company.hasMany(models.Social, { 
-			onDelete: 'cascade'
-		});
-		Company.hasMany(models.Search_engine, { 
-			onDelete: 'cascade'
-		});
-		Company.hasMany(models.monthUsage, { 
-			onDelete: 'cascade'
-		});
-		Company.hasMany(models.traffic, { 
-			onDelete: 'cascade'
-		});
+		// Company.hasMany(models.Social, { 
+		// 	onDelete: 'cascade'
+		// });
+		// Company.hasMany(models.Search_engine, { 
+		// 	onDelete: 'cascade'
+		// });
+		// Company.hasMany(models.monthUsage, { 
+		// 	onDelete: 'cascade'
+		// });
+		// Company.hasMany(models.traffic, { 
+		// 	onDelete: 'cascade'
+		// });
 
 	};
 

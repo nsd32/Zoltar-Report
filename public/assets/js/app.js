@@ -471,8 +471,6 @@ $(document).ready(function() {
     $('#otherBounceRate').text(roundTwoDecimal.round(bounceRate.other,2) + ' %');
     $('#otherExitRate').text(roundTwoDecimal.round(exitRate.other,2) + ' %');
 
-
-
   }
 
   var roundTwoDecimal = {};
@@ -500,8 +498,9 @@ $(document).ready(function() {
     
     genPDF();
 
-  });
-
+    });
 });
+
+
 
 
