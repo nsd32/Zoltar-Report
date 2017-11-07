@@ -56,34 +56,13 @@ module.exports = function(sequelize, DataTypes) {
 	
 			}
         },
-        goalCompletion: {
-			type: DataTypes.INTEGER,
+        channel: {
+			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				isNumeric: true
+				
 			}
 		},
-		company_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				isNumeric: true
-			}
-        },
-        property_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				isNumeric: true
-			}
-        },
-        view_id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				isNumeric: true
-			}
-        },
         start_date: {
 			type: DataTypes.DATE,
 			allowNull: false,
@@ -93,7 +72,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         end_date: {
 			type: DataTypes.DATE,
-			allowNull: false,
+			allowNull: true,
 			validate: {
 				
 			}
@@ -101,21 +80,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     monthUsage.associate = function(models) {
-		// We're saying that Social Data should belong to an Company, Property and View
-		// Social Data can't be created without an Company, Property and View due to the foreign key constraint
-		monthUsage.belongsTo(models.Company, {
-			foreignKey: {
-				allowNull: false
-			}
-        });
-        monthUsage.belongsTo(models.Property, {
-			foreignKey: {
-				allowNull: false
-			}
-        });
         monthUsage.belongsTo(models.View, {
 			foreignKey: {
-				allowNull: false
+				allowNull: true
 			}
 		});
     };
