@@ -306,6 +306,11 @@ ul.alert-dropdown {
     padding: 5px 10px;
 }
 
+.save {
+    font-size: 15px;
+    padding: 5px 10px;
+}
+
 .delete {
     font-size: 15px;
     padding: 5px 10px;
@@ -316,11 +321,15 @@ ul.alert-dropdown {
     font-size: 15px;  
 }
 
-#viewDelete {
-    float: right;
-}
 
 #pdf {
+    padding: 5px;
+    font-size: 15px; 
+    float:right;
+    font-weight: bold;
+}
+
+#addCompany {
     padding: 5px;
     font-size: 15px; 
     float:right;
@@ -350,6 +359,18 @@ ul.alert-dropdown {
 #smallBall {
     float: left;
 }
+
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+
+}
+
+#tableTotals {
+    background-color: #337ab7;
+    color: white;
 
 .btn-danger {
     padding-top: 10px;

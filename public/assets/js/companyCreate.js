@@ -36,6 +36,8 @@ $(document).ready(function() {
         $('#viewID').empty();
        
         $('#createModal').modal('hide');
+
+        window.location.href = "/customer";
         
     }
 

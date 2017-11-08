@@ -64,9 +64,9 @@
                     <li class="active">
                         <a href="/dashboard"><i class="fa fa-fw fa-dashboard"></i> Monthly Dashboard</a>
                     </li>
-                    <li>
+                    {{!-- <li>
                         <a href="/dashboard"><i class="fa fa-fw fa-bar-chart-o"></i> Annual Dashboard</a>
-                    </li>
+                    </li> --}}
                      {{!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"> Settings</i><b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -122,7 +122,7 @@
                                         <i class="fa fa-tint fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="organic"></div>
+                                        <div class="huge organic"></div>
                                         <div>Organic</div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                                         <i class="fa fa-eye fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="direct"></div>
+                                        <div class="huge direct"></div>
                                         <div>Direct</div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                         <i class="fa fa-money fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="paid"></div>
+                                        <div class="huge paid"></div>
                                         <div>Paid Search</div>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                         <i class="fa fa-users fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="referral"></div>
+                                        <div class="huge referral"></div>
                                         <div>Referral</div>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@
                                         <i class="fa fa-bullhorn fa-3x" aria-hidden="true"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="social"></div>
+                                        <div class="huge social"></div>
                                         <div>Social</div>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                         <i class="fa fa-question-circle fa-3x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge" id="other"></div>
+                                        <div class="huge other"></div>
                                         <div>Other</div>
                                     </div>
                                 </div>
@@ -390,7 +390,11 @@
                                             <th class="emailPageviewsPerSession"></th>
                                             <th class="emailBounceRate"></th>
                                             <th class="emailExitRate"></th>
-                                        </tr> 
+
+                                        </tr>  
+
+                                      
+
                                         <tr>
                                             <th scope="row">Other</th>
                                             <th class="otherUsers"></th>
@@ -402,8 +406,10 @@
                                             <th class="otherPageviewsPerSession"></th>
                                             <th class="otherBounceRate"></th>
                                             <th class="otherExitRate"></th>
-                                        </tr>  
-                                        <tr class="table-primary">
+
+                                        </tr> 
+                                        <tr id="tableTotals">
+
                                             <th scope="row">Totals</th>
                                             <th class="totalUsers"></th>
                                             <th class="totalEntrance"></th>

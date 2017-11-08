@@ -60,6 +60,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Customers
+                            <button class = "btn btn-primary" id="addCompany" data-toggle="modal" data-target="#createModal"><i class="fa fa-fw fa-building"></i> Add Company</button>
                         </h1>                        
                     </div>
                 </div>
@@ -70,6 +71,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Customers</h3>
+                                
                             </div>
                             <div class="panel-body">
                                     <table class="table table-striped">
@@ -85,20 +87,17 @@
 
                                             {{#each companyInfo}}
                                         <tr>
-                                            <td>{{company_name}}</td>
-                                            <td>{{account_number}}</td>
+                                            <td><input type="text" class="form-control" id="companyEditName{{id}}" value="{{company_name}}" disabled></td>
+                                            <td><input type="text" class="form-control" id="accountEdit{{id}}" value="{{account_number}}" disabled></td>
                                             {{#each Properties}}{{#each Views}}
-                                            <td>{{../property_name}}</td>
-                                            <td>{{../tracking_id}}</td>
-                                            <td>{{view_name}}</td>
-                                            <td>{{ga_view_id}}</td>
-                                            <td>
-                                                <form action="/view/edit/{{view.id}}" id="viewEdit"></form>
-                                                    <button class="edit btn btn-warning"><span class="fa fa-pencil"></span></button>
-                                                </form>
-                                                <form action="/view/delete/{{view.id}}" id="viewDelete"></form>
-                                                    <button class="delete btn btn-danger"><span class="fa fa-trash-o"></span></button>
-                                                </form>
+                                            <td><input type="text" class="form-control" id="propertyEditName{{id}}" value="{{../property_name}}" disabled></td>
+                                            <td><input type="text" class="form-control" id="trackingEditId{{id}}" value="{{../tracking_id}}" disabled></td>
+                                            <td><input type="text" class="form-control" id="viewEditName{{id}}" value="{{view_name}}" disabled></td>
+                                            <td><input type="text" class="form-control" id="viewEditId{{id}}" value="{{ga_view_id}}" disabled></td>
+                                            <td>                                                
+                                                <button class="edit btn btn-warning" data-value="{{id}}"><span class="fa fa-pencil" title='Update View'></span></button>
+                                                <button class="save btn btn-success" data-value="{{id}}"><span class="fa fa-floppy-o" title='Save View'></span></button>
+                                                <button class="delete btn btn-danger" data-value="{{../../id}}"><span class="fa fa-trash-o" title='Delete Company'></span></button>
                                             </td>
                                             {{/each}}{{/each}}
                                         </tr>                                   
