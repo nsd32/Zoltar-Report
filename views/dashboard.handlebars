@@ -101,7 +101,7 @@
                             Dashboard <small>Statistics Overview</small>
                             <button class = "btn btn-primary" id="pdf"><i class="fa fa-fw fa-file-pdf-o"></i> Export PDF</button>
                         </h1>
-                        <ol class="breadcrumb">
+                        <ol class="breadcrumb" id="breadcrumb-heading">
                             <li class="active">
                                 <h5><i class="fa fa-dashboard"></i> Sessions<span class="main-sessions-total"></span></h5>
                             </li>
@@ -252,7 +252,7 @@
                 <div class="row" id="donut-chart-row">
                     <div class="col-lg-4">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading" id="sessions-heading">
                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Sessions<span id="sessions-total"></span></h3>
                             </div>
                             <div class="panel-body">
@@ -266,7 +266,7 @@
 
                     <div class="col-lg-4">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading" id="pageviews-heading">
 
                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Page Views<span id="pageview-total"></span></h3>
 
@@ -282,7 +282,7 @@
 
                     <div class="col-lg-4">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading" id="users-heading">
                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Users<span id="users-total"></span></h3>
                             </div>
                             <div class="panel-body">
@@ -299,7 +299,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading" id="channel-heading">
                                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Channel Breakdown</h3>
                             </div>
                             <div class="panel-body">

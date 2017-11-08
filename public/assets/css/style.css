@@ -380,6 +380,18 @@ ul.alert-dropdown {
     color: white;
 }
 
+#sessions-heading,
+#pageviews-heading,
+#users-heading,
+#channel-heading {
+    background-color: #545454;
+    color: #fff;
+}
+
+.panel-title {
+    font-size: large;
+}
+
 
 
 /*#selectDropDowns {
