@@ -103,6 +103,25 @@ module.exports = function(app) {
 			
 			}).then(function (result) {
 				console.log('View Created');
+				company.findAll({
+					include: [
+						{
+							model: property, 
+							include: [
+								{ 
+								model:view
+								}
+							]  
+						}
+					]		
+				}).then(function(dbCompany) {
+
+					var hbsObject = {
+						companyInfo: dbCompany
+					};
+					res.render('customer', hbsObject);
+					
+				});
 				// Transaction has been committed
 				// result is whatever the result of the promise chain returned to the transaction callback
 			}).catch(function (err) {
