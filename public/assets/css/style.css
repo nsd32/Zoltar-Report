@@ -360,6 +360,7 @@ ul.alert-dropdown {
     float: left;
 }
 
+
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     background-color: transparent;
     border: none;
@@ -370,4 +371,10 @@ ul.alert-dropdown {
 #tableTotals {
     background-color: #337ab7;
     color: white;
+
+.btn-danger {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    text-align: left;
 }

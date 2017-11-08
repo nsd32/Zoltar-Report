@@ -127,7 +127,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href= "#" data-toggle="modal" data-target="#organicDetailModal">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href= "#" data-toggle="modal" data-target="#directModal">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href= "#" data-toggle="modal" data-target="#paidModal">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -193,7 +193,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href= "#" data-toggle="modal" data-target="#referralModal">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -215,7 +215,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href= "#" data-toggle="modal" data-target="#socialModal">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -237,7 +237,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href= "#" data-toggle="modal" data-target="#otherModal">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -390,7 +390,11 @@
                                             <th class="emailPageviewsPerSession"></th>
                                             <th class="emailBounceRate"></th>
                                             <th class="emailExitRate"></th>
+
                                         </tr>  
+
+                                      
+
                                         <tr>
                                             <th scope="row">Other</th>
                                             <th class="otherUsers"></th>
@@ -402,8 +406,10 @@
                                             <th class="otherPageviewsPerSession"></th>
                                             <th class="otherBounceRate"></th>
                                             <th class="otherExitRate"></th>
+
                                         </tr> 
                                         <tr id="tableTotals">
+
                                             <th scope="row">Totals</th>
                                             <th class="totalUsers"></th>
                                             <th class="totalEntrance"></th>
@@ -444,6 +450,377 @@
 
         </div>
         <!-- /#page-wrapper -->
+        
+    <!-- Organic Detail View Modal -->
+        <div class="modal" id="organicDetailModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Organic</b></h3>
+                    </div>
+                    <div class="modal-body">
+                       <table class="table table-bordered" id="organicTableModal">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Organic</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Users</th>
+                                    <th class="organicUsers"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Entrances</th>
+                                    <th class="organicEntrance"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sessions</th>
+                                    <th class="organicSessions"></th>
+                                </tr>      
+                                <tr>
+                                    <th scope="row">% New Sessions</th>
+                                    <th class="organicPercentNewSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Avg. Session Duration(sec)</th>
+                                    <th class="organicAvgSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Page Views</th>
+                                    <th class="organicPageviews"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Page Views per Session</th>
+                                    <th class="organicPageviewsPerSession"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Bounce Rate</th>
+                                    <th class="organicBounceRate"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Exit Rate</th>
+                                    <th class="organicExitRate"></th>
+                                </tr>  
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    <!-- Direct Detail View Modal -->
+        <div class="modal" id="directModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Directs</b></h3>
+                    </div>
+                    <div class="modal-body">
+                       <table class="table table-bordered" id="directTableModal">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Direct</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Users</th>
+                                    <th class="directUsers"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Entrances</th>
+                                    <th class="directEntrance"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sessions</th>
+                                    <th class="directSessions"></th>
+                                </tr>      
+                                <tr>
+                                    <th scope="row">% New Sessions</th>
+                                    <th class="directPercentNewSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Avg. Session Duration(sec)</th>
+                                    <th class="directAvgSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Page Views</th>
+                                    <th class="directPageviews"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Page Views per Session</th>
+                                    <th class="directPageviewsPerSession"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Bounce Rate</th>
+                                    <th class="directBounceRate"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Exit Rate</th>
+                                    <th class="directExitRate"></th>
+                                </tr>  
+                            </tbody>
+                        </table> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Paid Detail View Modal -->
+        <div class="modal" id="paidModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Paid Searches</b></h3>
+                    </div>
+                    <div class="modal-body">
+                       <table class="table table-bordered" id="paidTableModal">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Paid</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Users</th>
+                                    <th class="paidUsers"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Entrances</th>
+                                    <th class="paidEntrance"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sessions</th>
+                                    <th class="paidSessions"></th>
+                                </tr>      
+                                <tr>
+                                    <th scope="row">% New Sessions</th>
+                                    <th class="paidPercentNewSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Avg. Session Duration(sec)</th>
+                                    <th class="paidAvgSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Page Views</th>
+                                    <th class="paidPageviews"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Page Views per Session</th>
+                                    <th class="paidPageviewsPerSession"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Bounce Rate</th>
+                                    <th class="paidBounceRate"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Exit Rate</th>
+                                    <th class="paidExitRate"></th>
+                                </tr>  
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Referral Detail View Modal -->
+        <div class="modal" id="referralModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Referrals</b></h3>
+                    </div>
+                    <div class="modal-body">
+                       <table class="table table-bordered" id="referralTableModal">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Referral</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Users</th>
+                                    <th class="referralUsers"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Entrances</th>
+                                    <th class="referralEntrance"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sessions</th>
+                                    <th class="referralSessions"></th>
+                                </tr>      
+                                <tr>
+                                    <th scope="row">% New Sessions</th>
+                                    <th class="referralPercentNewSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Avg. Session Duration(sec)</th>
+                                    <th class="referralAvgSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Page Views</th>
+                                    <th class="referralPageviews"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Page Views per Session</th>
+                                    <th class="referralPageviewsPerSession"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Bounce Rate</th>
+                                    <th class="referralBounceRate"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Exit Rate</th>
+                                    <th class="referralExitRate"></th>
+                                </tr>  
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Social Detail View Modal -->
+        <div class="modal" id="socialModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Socials</b></h3>
+                    </div>
+                    <div class="modal-body">
+                       <table class="table table-bordered" id="socialTableModal">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Social</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Users</th>
+                                    <th class="socialUsers"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Entrances</th>
+                                    <th class="socialEntrance"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sessions</th>
+                                    <th class="socialSessions"></th>
+                                </tr>      
+                                <tr>
+                                    <th scope="row">% New Sessions</th>
+                                    <th class="socialPercentNewSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Avg. Session Duration(sec)</th>
+                                    <th class="socialAvgSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Page Views</th>
+                                    <th class="socialPageviews"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Page Views per Session</th>
+                                    <th class="socialPageviewsPerSession"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Bounce Rate</th>
+                                    <th class="socialBounceRate"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Exit Rate</th>
+                                    <th class="socialExitRate"></th>
+                                </tr>  
+                            </tbody>
+                        </table> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Other Detail View Modal -->
+        <div class="modal" id="otherModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Others</b></h3>
+                    </div>
+                    <div class="modal-body">
+                       <table class="table table-bordered" id="otherTableModal">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Other</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Users</th>
+                                    <th class="otherUsers"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Entrances</th>
+                                    <th class="otherEntrance"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sessions</th>
+                                    <th class="otherSessions"></th>
+                                </tr>      
+                                <tr>
+                                    <th scope="row">% New Sessions</th>
+                                    <th class="otherPercentNewSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Avg. Session Duration(sec)</th>
+                                    <th class="otherAvgSessions"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Page Views</th>
+                                    <th class="otherPageviews"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Page Views per Session</th>
+                                    <th class="otherPageviewsPerSession"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Bounce Rate</th>
+                                    <th class="otherBounceRate"></th>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">Exit Rate</th>
+                                    <th class="otherExitRate"></th>
+                                </tr>  
+                            </tbody>
+                        </table> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /#wrapper -->
