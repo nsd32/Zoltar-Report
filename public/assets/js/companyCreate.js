@@ -37,7 +37,7 @@ $(document).ready(function() {
        
         $('#createModal').modal('hide');
 
-        window.location.href = "/customer";
+        setTimeout(function(){ window.location.href = '/customer'; }, 1500);
         
     }
 
