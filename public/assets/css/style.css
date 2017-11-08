@@ -301,6 +301,13 @@ ul.alert-dropdown {
     padding-bottom: 25px;
 }
 
+.btn-danger {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    text-align: left;
+}
+
 .edit {
     font-size: 15px;
     padding: 5px 10px;
@@ -373,12 +380,7 @@ ul.alert-dropdown {
     color: white;
 }
 
-.btn-danger {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 1em;
-    text-align: left;
-}
+
 
 /*#selectDropDowns {
     margin-left: 100px;
