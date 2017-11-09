@@ -98,29 +98,13 @@
                                             <td width="14%" class="text-center">                                                
                                                 <button class="edit btn btn-warning" data-value="{{id}}"><span class="fa fa-pencil" title='Update View'></span></button>
                                                 <button class="save btn btn-success" data-value="{{id}}"><span class="fa fa-floppy-o" title='Save View'></span></button>
-                                                <button class="delete btn btn-danger" data-value="{{../../id}}"><span class="fa fa-trash-o" title='Delete Company'></span></button>
+                                                <button class="delete btn btn-danger" data-value="{{../../id}}" data-toggle="modal" data-target="#deleteCompanyModal"><span class="fa fa-trash-o" title='Delete Company'></span></button>
                                             </td>
                                             {{/each}}{{/each}}
                                         </tr>                                   
                                             {{/each}} 
                                     </table>          
-                                    <!-- Create New User Modal -->
-                                    <div class="modal" id="deleteCompanyModal">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h3 class="modal-title alert alert-info text-center"><span class="fa fa-building"></span><b> Create Company Account</b></h3>
-                                                </div>
-                                                <div class="modal-body">
-                                                    
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success" id="deleteCompany">Delete Company</button>
-                                                    <button type="button" class="btn btn-danger" id="createCancel" data-dismiss="modal">Cancel</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                      
+                                                        
                             </div>
                         </div>
                     </div>
