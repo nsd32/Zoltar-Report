@@ -258,11 +258,49 @@
                             <div class="panel-body">
                                 <div id="sessions-donut-chart"></div>
                                 <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#" id="sessionDonutClick">View Details <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="panel-heading hide" id="sessionDonut">
+                                <h3 class="panel-title hide" id="sessionDonutTitle"><i class="fa fa-bar-chart-o fa-fw"></i> Sessions Details</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered hide" id="sessionsTable">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Direct</th>
+                                            <th class="directSessions"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Organic Search</th>
+                                            <th class="organicSessions"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Paid Search</th>
+                                            <th class="paidSessions"></th>
+                                        </tr>      
+                                        <tr>
+                                            <th scope="row">Social</th>
+                                            <th class="socialSessions"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Referral</th>
+                                            <th class="referralSessions"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <th class="emailSessions"></th>
+                                        </tr> 
+                                        <tr>
+                                            <th scope="row">Other</th>
+                                            <th class="otherSessions"></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                     </div>
+                </div>
 
                     <div class="col-lg-4">
                         <div class="panel panel-default">
@@ -274,8 +312,46 @@
                             <div class="panel-body">
                                 <div id="pageview-donut-chart"></div>
                                 <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#" id="viewsDonutClick">View Details <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
+
+                                <div class="panel-heading hide" id="viewsDonut">
+                                <h3 class="panel-title hide" id="viewsDonutTitle"><i class="fa fa-bar-chart-o fa-fw"></i> Page View Details</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered hide" id="viewsTable">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Direct</th>
+                                            <th class="directPageviews"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Organic Search</th>
+                                            <th class="organicPageviews"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Paid Search</th>
+                                            <th class="paidPageviews"></th>
+                                        </tr>      
+                                        <tr>
+                                            <th scope="row">Social</th>
+                                            <th class="socialPageviews"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Referral</th>
+                                            <th class="referralPageviews"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <th class="emailPageviews"></th>
+                                        </tr> 
+                                        <tr>
+                                            <th scope="row">Other</th>
+                                            <th class="otherPageviews"></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -288,8 +364,46 @@
                             <div class="panel-body">
                                 <div id="users-donut-chart"></div>
                                 <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#" id="usersDonutClick">View Details <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
+
+                                <div class="panel-heading hide" id="usersDonut">
+                                <h3 class="panel-title hide" id="usersDonutTitle"><i class="fa fa-bar-chart-o fa-fw"></i> Users Details</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered hide" id="usersTable">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Direct</th>
+                                            <th class="directUsers"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Organic Search</th>
+                                            <th class="organicUsers"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Paid Search</th>
+                                            <th class="paidUsers"></th>
+                                        </tr>      
+                                        <tr>
+                                            <th scope="row">Social</th>
+                                            <th class="socialUsers"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Referral</th>
+                                            <th class="referralUsers"></th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <th class="emailUsers"></th>
+                                        </tr> 
+                                        <tr>
+                                            <th scope="row">Other</th>
+                                            <th class="otherUsers"></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -518,7 +632,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Directs</b></h3>
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Direct</b></h3>
                     </div>
                     <div class="modal-body">
                        <table class="table table-bordered" id="directTableModal">
@@ -580,7 +694,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Paid Searches</b></h3>
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Paid Search</b></h3>
                     </div>
                     <div class="modal-body">
                        <table class="table table-bordered" id="paidTableModal">
@@ -642,7 +756,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Referrals</b></h3>
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Referral</b></h3>
                     </div>
                     <div class="modal-body">
                        <table class="table table-bordered" id="referralTableModal">
@@ -704,7 +818,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Socials</b></h3>
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Social</b></h3>
                     </div>
                     <div class="modal-body">
                        <table class="table table-bordered" id="socialTableModal">
@@ -766,7 +880,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Others</b></h3>
+                        <h3 class="modal-title alert alert-info text-center"><span class="fa fa-table"></span><b> Other</b></h3>
                     </div>
                     <div class="modal-body">
                        <table class="table table-bordered" id="otherTableModal">

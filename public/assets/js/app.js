@@ -378,7 +378,46 @@ $(document).ready(function() {
             value: users.other
         }],
         resize: true
-    });  
+    });
+
+    $('#sessionDonutClick').on('click', function(event) {
+        event.preventDefault();
+        if ($("#sessionDonut").hasClass("hide")) {
+            $("#sessionDonut").removeClass("hide");
+            $("#sessionDonutTitle").removeClass("hide");
+            $("#sessionsTable").removeClass("hide")
+        } else {
+            $("#sessionDonut").addClass("hide");
+            $("#sessionDonutTitle").addClass("hide");
+            $("#sessionsTable").addClass("hide")
+        }
+    }); 
+
+        $('#viewsDonutClick').on('click', function(event) {
+        event.preventDefault();
+        if ($("#viewsDonut").hasClass("hide")) {
+            $("#viewsDonut").removeClass("hide");
+            $("#viewsDonutTitle").removeClass("hide");
+            $("#viewsTable").removeClass("hide")
+        } else {
+            $("#viewsDonut").addClass("hide");
+            $("#viewsDonutTitle").addClass("hide");
+            $("#viewsTable").addClass("hide")
+        }
+    });
+
+            $('#usersDonutClick').on('click', function(event) {
+        event.preventDefault();
+        if ($("#usersDonut").hasClass("hide")) {
+            $("#usersDonut").removeClass("hide");
+            $("#usersDonutTitle").removeClass("hide");
+            $("#usersTable").removeClass("hide")
+        } else {
+            $("#usersDonut").addClass("hide");
+            $("#usersDonutTitle").addClass("hide");
+            $("#usersTable").addClass("hide")
+        }
+    }); 
 
     $('#channelBreakdown').removeClass('hide');
     
