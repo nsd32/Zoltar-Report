@@ -53,17 +53,32 @@ $(document).ready(function() {
 
 
 
+
+
     $(document).on('click', '.delete', function() {
         console.log('Delete button clicked');
-        var id = {id:$(this).attr('data-value')};
+        var id = $(this).attr('data-value');
         console.log('Company ID: ', id);
 
-        $.post('company/delete', id)
-        .done(function(deldata) {
-            console.log('Deleted Successfully')
-        });
+        $('#deleteCompanyModal').data('id', id); 
+        console.log($('#deleteCompanyModal').data('id'));       
+    });
 
-        $(this).closest('tr').remove();
+    
+    $(document).on('click', '#deleteCompany', function() {
+        console.log('Delete button clicked');
+        var id = {id: $('#deleteCompanyModal').data('id')};
+        console.log('Delete Company ID: ', id);
+
+        deleteCompany(id);
+
+
+        function deleteCompany(companyData) {
+            $.post('/company/delete/', id).then(function() {
+                window.location.href = '/customer';
+    
+            });
+        }
 
     });
 

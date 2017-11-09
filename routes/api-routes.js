@@ -148,6 +148,28 @@ module.exports = function(app) {
 				where: {
 					id: req.body.id
 				}
+			
+			}).then(function (result) {
+				console.log('View Created');
+				company.findAll({
+					include: [
+						{
+							model: property, 
+							include: [
+								{ 
+								model:view
+								}
+							]  
+						}
+					]		
+				}).then(function(dbCompany) {
+
+					var hbsObject = {
+						companyInfo: dbCompany
+					};
+					res.render('customer', hbsObject);
+					
+				});
 			});
 		});
 

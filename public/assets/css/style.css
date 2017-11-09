@@ -363,6 +363,16 @@ ul.alert-dropdown {
     font-size: 15px;
 }
 
+#deleteCompany {
+    padding: 12px;
+    font-size: 15px;
+}
+
+#deleteCancel {
+    padding: 12px;
+    font-size: 15px;
+}
+
 #smallBall {
     float: left;
 }
