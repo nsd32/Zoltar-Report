@@ -97,11 +97,31 @@ module.exports = function(app) {
 					ga_view_id: req.body.ga_view_id,	
 					PropertyId: dbProperty.dataValues.id,
 					CompanyId: dbCompany.dataValues.id
-					}, {transaction: t});
-				});
+				}, {transaction: t});
+			});
 			});
 			
-			
+			}).then(function (result) {
+				console.log('View Created');
+				company.findAll({
+					include: [
+						{
+							model: property, 
+							include: [
+								{ 
+								model:view
+								}
+							]  
+						}
+					]		
+				}).then(function(dbCompany) {
+
+					var hbsObject = {
+						companyInfo: dbCompany
+					};
+					res.render('customer', hbsObject);
+					
+				});
 				// Transaction has been committed
 				// result is whatever the result of the promise chain returned to the transaction callback
 			}).catch(function (err) {
@@ -119,7 +139,7 @@ module.exports = function(app) {
 			{
 				where: {id:req.body.id}
 			});
-		});+
+		});
 		
 		app.post('/company/delete', function(req, res) {
 			console.log('Delete Body: ',req.body);
