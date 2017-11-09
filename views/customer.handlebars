@@ -77,24 +77,25 @@
                                     <table class="table table-striped">
                                         <tr>
                                             <th>Company Name</th>
-                                            <th>Account #</th>
-                                            <th>Property Name</th>
-                                            <th>Tracking ID</th>
-                                            <th>View Name</th>
-                                            <th>Google View ID</th>
-                                            <th>View Actions</th>                                           
+                                            <th class="text-center">Account #</th>
+                                            <th class="">Property Name</th>
+                                            <th class="text-center">Tracking ID</th>
+                                            <th class="">View Name</th>
+                                            <th class="text-center">Google View ID</th>
+                                            <th class="text-center">View Actions</th>                                           
                                         </tr>
 
                                             {{#each companyInfo}}
+                                            
                                         <tr>
-                                            <td><input type="text" class="form-control" id="companyEditName{{id}}" value="{{company_name}}" disabled></td>
-                                            <td><input type="text" class="form-control" id="accountEdit{{id}}" value="{{account_number}}" disabled></td>
+                                            <td width="20%"><input type="text" class="form-control" id="companyEditName{{id}}" value="{{company_name}}" disabled></td>
+                                            <td width="12%"><input type="text" class="form-control text-center" id="accountEdit{{id}}" value="{{account_number}}" disabled></td>
                                             {{#each Properties}}{{#each Views}}
-                                            <td><input type="text" class="form-control" id="propertyEditName{{id}}" value="{{../property_name}}" disabled></td>
-                                            <td><input type="text" class="form-control" id="trackingEditId{{id}}" value="{{../tracking_id}}" disabled></td>
-                                            <td><input type="text" class="form-control" id="viewEditName{{id}}" value="{{view_name}}" disabled></td>
-                                            <td><input type="text" class="form-control" id="viewEditId{{id}}" value="{{ga_view_id}}" disabled></td>
-                                            <td>                                                
+                                            <td width="14%"><input type="text" class="form-control" id="propertyEditName{{id}}" value="{{../property_name}}" disabled></td>
+                                            <td width="14%"><input type="text" class="form-control text-center" id="trackingEditId{{id}}" value="{{../tracking_id}}" disabled></td>
+                                            <td width="14%"><input type="text" class="form-control" id="viewEditName{{id}}" value="{{view_name}}" disabled></td>
+                                            <td width="12%"><input type="text" class="form-control text-center" id="viewEditId{{id}}" value="{{ga_view_id}}" disabled></td>
+                                            <td width="14%" class="text-center">                                                
                                                 <button class="edit btn btn-warning" data-value="{{id}}"><span class="fa fa-pencil" title='Update View'></span></button>
                                                 <button class="save btn btn-success" data-value="{{id}}"><span class="fa fa-floppy-o" title='Save View'></span></button>
                                                 <button class="delete btn btn-danger" data-value="{{../../id}}"><span class="fa fa-trash-o" title='Delete Company'></span></button>

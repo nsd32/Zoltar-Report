@@ -36,13 +36,14 @@ $(document).ready(function() {
         $('#viewID').empty();
        
         $('#createModal').modal('hide');
-
-        setTimeout(function(){ window.location.href = '/customer'; }, 1500);
-        
     }
 
     function insertCompany(companyData) {
-        $.post('/company/new', companyData);
+        $.post('/company/new', companyData).then(function() {
+            window.location.href = '/customer';
+
+        });
     }
 
 });
+
